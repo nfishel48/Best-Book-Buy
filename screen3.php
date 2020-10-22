@@ -40,7 +40,7 @@
 			if (!$result) {
 				echo "<h3>An error occurred.</h3>";
 			}
-			echo "<h3>$result</h3";
+			echo "<h3>$result[0] $result[1] $result[2] $result[3]</h3";
 
 			pg_close($db_conn);
 		?>
