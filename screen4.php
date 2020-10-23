@@ -40,8 +40,11 @@
 		<tr>
 			<td colspan="2">
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:300px;border:1px solid black;">
-			<table>
-						</table>
+				<table>
+					<tr>
+						<td><? echo"<h3>$arr[0]</h3> ?>
+					</tr>		
+				</table>
 			</div>
 			</td>
 		</tr>
