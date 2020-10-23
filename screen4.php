@@ -42,7 +42,7 @@
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:300px;border:1px solid black;">
 				<table>
 					<tr>
-						<td><? echo"<h3>$arr[0]</h3> ?>
+						<td><? echo"<h3>$arr[0]</h3>" ?>
 					</tr>		
 				</table>
 			</div>
