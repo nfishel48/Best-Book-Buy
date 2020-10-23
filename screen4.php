@@ -44,13 +44,13 @@
 				$i = 0;
 				$size = sizeof($arr);
 				echo $size ;
-				$a = "<tr><td><h3>Username: ".$arr[$size-3]."</h3></td></tr><tr><td><<p>".$arr[$size-1]."</p></td></tr>"; 	
+				$a = "<tr><td><h3>Username: ".$arr[$size-3]."</h3></td></tr><tr><td><p>".$arr[$size-1]."</p></td></tr><hr>"; 	
 				while($i < $size-3):
 					echo $a;
 					$i = $i + 1;
 				endwhile;	
 				?></table>
-				<hr>
+				
 			</div>
 			</td>
 		</tr>
