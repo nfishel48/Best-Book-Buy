@@ -42,18 +42,12 @@
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:300px;border:1px solid black;">
 				<table><? 
 				$i = 0;
-				$size = $arr.sizeof();
-				$a = "
-					<tr>
-						<td><h3>Username: ". $arr[size-2]."</h3></td>
-					</tr>
-					<tr>
-						<td><<p>".$arr[size]."</p></td>
-					</tr>"; 	
-					while($i <= $size-2):
-						echo $a;
-					endwhile;	
-					?> </table>
+				$size = sizeof($arr);
+				$a = "<tr><td><h3>Username: ".$arr[size-2]."</h3></td></tr><tr><td><<p>".$arr[size]."</p></td></tr>"; 	
+				while($i <= $size-2):
+					echo $a;
+				endwhile;	
+				?></table>
 				<hr>
 			</div>
 			</td>
