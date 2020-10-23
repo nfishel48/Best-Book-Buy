@@ -27,13 +27,12 @@
 			} else if ($pin != $retype_pin) {
 				echo("<h3>Pins do not match</h3>");
 			} else {
-				$insert = pg_query($db, "insert into customer values('$username', '$firstname', '$lastname', $pin, '$address', '$city', '$state', '$zip', '$credit_card', '$card_number', '$expiration')");
+				$insert = pg_query($db, "insert into customer (username, first_name, last_name, pin, address, city, state, zip, cctype, ccnum, expdate) values('$username', '$firstname', '$lastname', $pin, '$address', '$city', '$state', '$zip', '$credit_card', '$card_number', '$expiration')");
 
 				if ($insert) {
 					echo("Account created");
 				} else {
 					echo("There was an error");
-					echo(pg_result_error($insert));
 				}
 			}
 
