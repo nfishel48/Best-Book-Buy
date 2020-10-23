@@ -33,6 +33,7 @@
 					echo("Account created");
 				} else {
 					echo("There was an error");
+					echo(pg_result_error($insert));
 				}
 			}
 
