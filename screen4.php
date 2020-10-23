@@ -21,10 +21,6 @@
 	echo "<h3>An error occurred.</h3>";
 	}
 	$arr = pg_fetch_array($result, 0, PGSQL_NUM);
-	echo $arr[0] . " <- Row 1 ID\n";
-	echo $arr[1] . " <- Row 1 Author\n";
-	echo $arr[2] . " <- Row 1 Book\n";
-	echo $arr[3] . " <- Row 1 Content\n";
 	pg_close($db_conn);
 ?>
 	<table align="center" style="border:1px solid blue;">
