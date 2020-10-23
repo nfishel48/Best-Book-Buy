@@ -42,9 +42,13 @@
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:300px;border:1px solid black;">
 				<table>
 					<tr>
-						<td><? echo"<h3>$arr[0]</h3>" ?>
+						<td><? echo"<h3>Username: $arr[1]</h3>" ?></td>
+					</tr>
+					<tr>
+						<td><? echo"<p>$arr[3]</p>" ?></td>
 					</tr>		
 				</table>
+				<br>
 			</div>
 			</td>
 		</tr>
