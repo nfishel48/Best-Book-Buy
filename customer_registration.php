@@ -22,7 +22,7 @@
 
 			$username_test = pg_query($db, "select * from customer where username = '$username'");
 			
-			if ($username_test) {
+			if ($username_test && pg_num_rows($username_test) > 0) {
 				echo("<h3>Username $username is taken, please try another</h3>");
 			} else if ($pin != $retype_pin) {
 				echo("<h3>Pins do not match</h3>");
