@@ -40,15 +40,21 @@
 		<tr>
 			<td colspan="2">
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:300px;border:1px solid black;">
-				<table>
+				<table><? 
+				$i = 0;
+				$size = $arr.sizeof();
+				$a = '
 					<tr>
-						<td><? echo"<h3>Username: $arr[1]</h3>" ?></td>
+						<td>echo"<h3>Username: $arr[size-2]</h3>"</td>
 					</tr>
 					<tr>
-						<td><? echo"<p>$arr[3]</p>" ?></td>
-					</tr>		
-				</table>
-				<br>
+						<td><? echo"<p>$arr[size]</p>" ?></td>
+					</tr>'; 	
+					while($i <= $size-2):
+						echo $a;
+					endwhile;	
+					?> </table>
+				<hr>
 			</div>
 			</td>
 		</tr>
