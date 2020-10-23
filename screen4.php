@@ -43,6 +43,7 @@
 				<table><? 
 				$i = 0;
 				$size = sizeof($arr);
+				echo $size ;
 				$a = "<tr><td><h3>Username: ".$arr[size-2]."</h3></td></tr><tr><td><<p>".$arr[size]."</p></td></tr>"; 	
 				while($i <= $size-2):
 					echo $a;
