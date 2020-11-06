@@ -52,9 +52,9 @@
 						$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 
 					
-					pg_close($db);
+					
 		
-		//echo '<tr>';
+		echo '<tr>';
 		echo	"<td style='width: 350px' colspan='3' align='center'>";
 			echo '<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;background-color:LightBlue">';
 				echo '<table>';
@@ -77,6 +77,7 @@
 			echo "</td>";
 		//echo "</tr>";
 		}
+		pg_close($db);
 		?>
 	</table>
 			</div>
