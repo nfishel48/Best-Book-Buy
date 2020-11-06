@@ -8,6 +8,7 @@
 			$result =  pg_query($db, $query);
 			echo $result;
 			$row = pg_fetch_row($result);
+			echo $row;
 			pg_close($db);
 ?>
 <head>
