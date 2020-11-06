@@ -1,6 +1,14 @@
 
 <!-- Figure 2: Search Screen by Alexander -->
 <html>
+<?
+		// if (!empty($_POST)) {
+			$searchon = $_POST['searchon'];
+			$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
+			$username_test = pg_query($db, "select * from customer where username = '$username'");
+			pg_close($db);
+		// }
+	?>
 <head>
 	<title>SEARCH - 3-B.com</title>
 </head>
@@ -15,7 +23,7 @@
 		<tr>
 			<td>Search In: </td>
 				<td>
-					<select name="searchon[]" multiple>
+					<select id="searchon" name="searchon[]" multiple>
 						<option value="anywhere" selected='selected'>Keyword anywhere</option>
 						<option value="title">Title</option>
 						<option value="author">Author</option>
@@ -37,16 +45,5 @@
 		</tr>
 	</table>
 </body>
-<?
-$db_handle = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
-if($db_handle){
-	echo 'Connection successful';
-} else {
-
-	echo 'Connection attempt failed.';
-	
-	}
-pg_close($db_handle);
-?>
 </html>
 
