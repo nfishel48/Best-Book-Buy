@@ -3,7 +3,8 @@
 <html>
 <?
 			$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
-			$query = "Select * From Book Where "+$_POST['searchon']+" LIKE %"+$_POST['searchfor']+"%";
+			echo $query
+			$query = "Select * From Book Where "+$_POST['searchon']+" LIKE %"+$_POST['searchfor']+"%;";
 			$result =  pg_query($db_conn, $query);
 			echo $result;
 			pg_close($db);
