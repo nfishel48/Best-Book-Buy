@@ -50,33 +50,35 @@
 						$Author = $row[2];
 						$Publisher = $row[3];
 						$Price = $row[4];
-						$a = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-						
-					}
+						$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
+
+					
 					pg_close($db);
-		?>
-		<tr>
-			<td style='width: 350px' colspan='3' align='center'>
-				<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;background-color:LightBlue">
-				<table>
-				<tr>
-					<td align='left'>
-						<button name='btnCart' id='btnCart' onClick='cart("123441", "", "Array", "all")'>Add to Cart</button>
-					</td>
-					<? echo $a ?>
-				</tr>
-				<tr>
-					<td align='left'>
-						<button name='review' id='review' onClick='review("123441", "iuhdf")'>Reviews</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2'>
-						<p>_______________________________________________</p>
-					</td>
-			</td>
-		</tr>
 		
+		echo '<tr>';
+		echo	"<td style='width: 350px' colspan='3' align='center'>";
+			echo '<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;background-color:LightBlue">';
+				echo '<table>';
+				echo '<tr>';
+					echo "<td align='left'>";
+			// Place link for cart here	
+						echo "<button name='btnCart' id='btnCart' onClick='cart(\"123441\", \"\", \"Array\", \"all\")'>Add to Cart</button>";
+					echo'</td>';
+					echo $book; 
+				echo '</tr>';
+				echo '<tr>';
+					echo "<td align='left'>";
+						echo "<button name='review' id='review' onClick='review(\"123441\", \"iuhdf\")'>Reviews</button>";
+					echo"</td>";
+				echo "</tr>";
+				echo "<tr>";
+					echo "<td colspan='2'>";
+						echo "<p>_______________________________________________</p>";
+					echo "</td>";
+			echo "</td>";
+		echo "</tr>";
+		}
+		?>
 	</table>
 			</div>
 			

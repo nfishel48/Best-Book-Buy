@@ -6,3 +6,6 @@ VALUES ('Test', 'Tom', 'Tester', '123', '223 street', 'Ypsilanti','Michigan','48
 
 INSERT INTO Review(Author, Book, Content)
 VALUES ('Test', '10247184712349', 'Amazing book, must read for anyone.');
+
+INSERT INTO Review(Author, Book, Content)
+VALUES ('nfishel', '10247184712349', 'Hated it don’t waste your time.');
