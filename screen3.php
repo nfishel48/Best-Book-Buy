@@ -40,20 +40,16 @@
 			</td>
 		</tr>
 		<?
-					$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
-					$query = "Select * From Book Where ".$_POST['searchon']." LIKE '%".$_POST['searchfor']."%';";
-					$result =  pg_query($db, $query);
-					while ($row = pg_fetch_row($result)) {
-						$ISBN = $row[0];
-						$Title = $row[1];
-						$Author = $row[2];
-						$Publisher = $row[3];
-						$Price = $row[4];
-						$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-
-					
-					
-		
+		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
+		$query = "Select * From Book Where ".$_POST['searchon']." LIKE '%".$_POST['searchfor']."%';";
+		$result =  pg_query($db, $query);
+		while ($row = pg_fetch_row($result)) {
+			$ISBN = $row[0];
+			$Title = $row[1];
+			$Author = $row[2];
+			$Publisher = $row[3];
+			$Price = $row[4];
+			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 		echo '<tr>';
 		echo	"<td style='width: 350px' colspan='3' align='center'>";
 			echo '<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;background-color:LightBlue">';
@@ -70,6 +66,7 @@
 						echo "<button name='review' id='review' onClick='review(\"123441\", \"iuhdf\")'>Reviews</button>";
 					echo"</td>";
 				echo "</tr>";
+			echo "</tr>";
 				echo "<tr>";
 					echo "<td colspan='2'>";
 						echo "<p>_______________________________________________</p>";
