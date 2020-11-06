@@ -6,11 +6,7 @@
 			$query = "Select * From Book Where ".$_POST['searchon']." LIKE '%".$_POST['searchfor']."%';";
 			$result =  pg_query($db, $query);
 			$row = pg_fetch_row($result);
-			echo $row[0];
-			echo $row[1];
-			echo $row[2];
-			echo $row[3];
-			echo $row[4];
+
 			pg_close($db);
 ?>
 <head>
@@ -42,7 +38,23 @@
 					<input type="submit" value="Manage Shopping Cart">
 				</form>
 			</td>
-		</tr>	
+		</tr>
+			
+		<?
+					$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
+					$query = "Select * From Book Where ".$_POST['searchon']." LIKE '%".$_POST['searchfor']."%';";
+					$result =  pg_query($db, $query);
+					while ($row = pg_fetch_row($result)) {
+						$ISBN = $row[0];
+						$Title = $row[1];
+						$Author = $row[2];
+						$Publisher = $row[3];
+						$Price = $row[4];
+						$a = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
+						
+					}
+					pg_close($db);
+		?>
 		<tr>
 			<td style='width: 350px' colspan='3' align='center'>
 				<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;background-color:LightBlue">
@@ -51,7 +63,7 @@
 					<td align='left'>
 						<button name='btnCart' id='btnCart' onClick='cart("123441", "", "Array", "all")'>Add to Cart</button>
 					</td>
-					<td rowspan='2' align='left'>iuhdf</br>By Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill,</br><b>ISBN:</b> 123441</t> <b>Price:</b> 12.99</td>
+					<? echo $a ?>
 				</tr>
 				<tr>
 					<td align='left'>
