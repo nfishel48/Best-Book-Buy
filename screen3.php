@@ -4,11 +4,13 @@
 <?
 			$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 			$query = "Select * From Book Where ".$_POST['searchon']." LIKE '%".$_POST['searchfor']."%';";
-			echo $query;
 			$result =  pg_query($db, $query);
-			echo $result;
 			$row = pg_fetch_row($result);
 			echo $row[0];
+			echo $row[1];
+			echo $row[2];
+			echo $row[3];
+			echo $row[4];
 			pg_close($db);
 ?>
 <head>
@@ -61,6 +63,7 @@
 						<p>_______________________________________________</p>
 					</td>
 			</td>
+		</tr>
 		
 	</table>
 			</div>
