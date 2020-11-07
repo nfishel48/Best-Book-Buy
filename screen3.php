@@ -46,7 +46,7 @@
 				<table>
 		<?
 		//Trigger fuction if button is pressed
-		if(array_key_exists('Add to cart', $_POST)) { 
+		if(array_key_exists('button1', $_POST)) { 
 			echo "button pressed   ";
 			addToCart($ISBN); 
 			} 
@@ -70,7 +70,7 @@
 					echo '<tr>';
 						echo "<td align='left'>";
 							echo '<form method="post" action="shopping_cart.php">'; 
-								echo '<input type="submit" name="button1" class="button" value="Add to cart" />';
+								echo '<input type="submit" name="button1" class="button" value="button1" />';
 							echo '</form>';
 						echo'</td>';
 					echo $book; 
