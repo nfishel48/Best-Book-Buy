@@ -51,16 +51,15 @@
 			$Price = $row[4];
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 		echo '<tr>';
-		echo	"<td style='width: 350px' colspan='3' align='center'>";
+			echo"<td style='width: 350px' colspan='3' align='center'>";
 			echo '<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;background-color:LightBlue">';
-				echo '<table>';
-				echo '<tr>';
-					echo "<td align='left'>";
-			// Place link for cart here	
-						echo "<button name='btnCart' id='btnCart' onClick='cart(\"123441\", \"\", \"Array\", \"all\")'>Add to Cart</button>";
-					echo'</td>';
+					echo '<tr>';
+						echo "<td align='left'>";
+							// Place link for cart here	
+							echo "<button name='btnCart' id='btnCart' onClick='cart(\"123441\", \"\", \"Array\", \"all\")'>Add to Cart</button>";
+						echo'</td>';
 					echo $book; 
-				echo '</tr>';
+					echo '</tr>';
 				echo '<tr>';
 					echo "<td align='left'>";
 						echo "<button name='review' id='review' onClick='review(\"123441\", \"iuhdf\")'>Reviews</button>";
