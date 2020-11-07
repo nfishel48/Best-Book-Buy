@@ -26,7 +26,7 @@
 				if ($key[0] == 't' and $key[1] == 'x' and $key[2] == 't'){ //really bad code i know
 					$isbn = substr($str, 3);
 					
-					$query = pg_query($db, "update order_book set quantity = $value where book_isbn = $isbn");
+					$query = pg_query($db, "update order_book set quantity = $value where book_isbn = '$isbn'");
 				}
 			}
 		}
