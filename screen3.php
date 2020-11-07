@@ -46,7 +46,7 @@
 				<table>
 		<?
 		if(array_key_exists('button1', $_POST)) { 
-			echo "button pressed   ";
+			echo "Hello";
 			addToCart($ISBN); 
 			} 
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
@@ -67,9 +67,10 @@
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
 					echo '<tr>';
 						echo "<td align='left'>";
-							 '<form method="post">'; 
-								echo '<input type="submit" name="button1" class="button" value="Add to cart" />';
-							'</form>';
+						echo '<form method="post">'; 
+							echo '<input type="submit" name="button1"';
+								echo 'class="button" value="Button1" />';
+						echo '</form>'; 
 						echo'</td>';
 					echo $book; 
 					echo '</tr>';
