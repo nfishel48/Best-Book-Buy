@@ -67,7 +67,7 @@
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
 					echo '<tr>';
 						echo "<td align='left'>";
-							echo '<form method="post">'; 
+							echo '<form method="post" action="screen4.php">'; 
 								echo '<input type="submit" name="button1" class="button" value="Add to cart" />';
 							echo '</form>';
 						echo'</td>';
