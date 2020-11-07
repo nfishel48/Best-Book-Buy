@@ -64,6 +64,7 @@
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
 			//Trigger fuction if button is pressed
 			if(array_key_exists('button1', $_POST)) { 
+				echo "button pressed   ";
 				addToCart($ISBN); 
 			} 
 
@@ -91,7 +92,6 @@
 		//echo "</tr>";
 		}
 		function addToCart($ISBN){
-			echo "button pressed   ";
 			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
 			echo $add;
 			pg_query($db, $add);
