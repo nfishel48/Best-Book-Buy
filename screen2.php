@@ -17,7 +17,7 @@
 			<td>Search In: </td>
 				<td>
 					<select  name="searchon" multiple>
-						<option value="anywhere" selected='selected'>Keyword anywhere</option>
+						<option value="*" selected='selected'>Keyword anywhere</option>
 						<option value="title">Title</option>
 						<option value="author">Author</option>
 						<option value="publisher">Publisher</option>
