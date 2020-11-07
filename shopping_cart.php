@@ -16,9 +16,9 @@
 		$order = pg_query($db, "select * from \"order\" join \"order_book\" on \"order\".number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
 	
 		if (!empty($_POST)) {
-			//$username = $_POST['username'];
+			$isbn = $_POST['delIsbn'];
 
-			//$username_test = pg_query($db, "select * from customer where username = '$username'");
+			$remove_book = pg_query($db, "delete from order_book where placed = false and book_isbn = $isbn");
 		}
 		
 		pg_close($db);
