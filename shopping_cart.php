@@ -21,7 +21,7 @@
 			if ($isbn){
 				$remove_book = pg_query($db, "delete from order_book where order_number = (select number from \"order\" where placed = false) and book_isbn = '$isbn'");
 			}
-		} else if (!empty($_POST){
+		} else if (!empty($_POST)){
 			echo($_POST);
 			print($_POST);
 		}
