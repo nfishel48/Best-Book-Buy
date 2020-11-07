@@ -15,7 +15,7 @@
 	<table align="center" style="border:1px solid blue;">
 		<tr>
 			<td align="center">
-				<h5>Reviews for</h5>
+				<? echo "<h5>Reviews for</h5>".$_POST['review'] ?>
 			</td>
 			<td align="left">
 				<h5> </h5>
