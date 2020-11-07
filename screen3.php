@@ -53,6 +53,7 @@
 		echo '<tr>';
 			echo"<td style='width: 350px' colspan='3' align='center'>";
 			echo '<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">';
+				echo '<table>';
 					echo '<tr>';
 						echo "<td align='left'>";
 							// Place link for cart here	
