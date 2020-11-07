@@ -55,7 +55,7 @@
 			$Publisher = $row[3];
 			$Price = $row[4];
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-			$review = "<input name='Review' id='review' type='submit' value='".$ISBN."'</input>";
+			$review = "<input name='Review' id='review' type='submit' value='".$ISBN."'Review</input>";
 					echo '<tr>';
 						echo "<td align='left'>";
 							// Place link for cart here	
