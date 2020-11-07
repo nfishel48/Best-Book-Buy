@@ -19,7 +19,7 @@
 			$isbn = $_GET['delIsbn'];
 
 			if ($isbn){
-				$remove_book = pg_query($db, "delete from order_book join \"order\" on order_book.order_number = \"order\".number where placed = false and book_isbn = '$isbn'");
+				$remove_book = pg_query($db, "delete from order_book where order_number = (select number from \"order\" where placed = false) and book_isbn = '$isbn'");
 			}
 		}
 		
