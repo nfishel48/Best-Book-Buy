@@ -40,6 +40,7 @@
 			</td>
 		</tr>
 		<tr>
+		
 		<td style='width: 350px' colspan='3' align='center'>
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">
 				<table>
@@ -64,7 +65,9 @@
 					echo '</tr>';
 				echo '<tr>';
 					echo "<td align='left'>";
+					echo '<form action="screen4.php" method="post">';
 						echo $review;
+					echo '</form>';
 					echo"</td>";
 				echo "</tr>";
 			echo "</tr>";
