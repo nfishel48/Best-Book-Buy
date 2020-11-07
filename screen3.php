@@ -52,7 +52,7 @@
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 		echo '<tr>';
 			echo"<td style='width: 350px' colspan='3' align='center'>";
-			echo '<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">';
+			//echo '<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">';
 				echo '<table>';
 					echo '<tr>';
 						echo "<td align='left'>";
