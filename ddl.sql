@@ -43,3 +43,21 @@ CREATE TABLE Review(
         ON DELETE CASCADE
 );
 
+CREATE TABLE Order (
+    number serial, 
+    customer_id int, 
+    placed boolean default(false), 
+    primary key(number), 
+    foreign key(customer_id) references customer(id));
+
+CREATE TABLE Order_book (
+    order_number int, 
+    book_isbn varchar(15), 
+    quantity int, 
+    primary key(order_number, book_isbn), 
+    foreign key(order_number) 
+    references Order(number), 
+    foreign key(book_isbn) 
+    references Book(isbn));
+
+

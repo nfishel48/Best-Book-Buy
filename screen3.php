@@ -45,6 +45,10 @@
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">
 				<table>
 		<?
+		// if button is pressed add to cart
+		if(array_key_exists('button1', $_POST)) { 
+        	addToCart(); 
+        } 
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 		if($_POST['searchon'] == '*'){
 			$query = "Select * from Book;";
@@ -60,11 +64,12 @@
 			$Publisher = $row[3];
 			$Price = $row[4];
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-			$cart = "<button name='cart' id='cart' onClick='cart(\"123441\", \"\", \"Array\", \"all\")'>Add to Cart</button>";
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
 					echo '<tr>';
 						echo "<td align='left'>";
-							echo $cart;
+							echo '<form method="post">'; 
+								echo '<input type="submit" name="button1" class="button" value="Add to cart" />';
+							echo '</form>';
 						echo'</td>';
 					echo $book; 
 					echo '</tr>';
@@ -82,6 +87,9 @@
 					echo "</td>";
 			echo "</td>";
 		//echo "</tr>";
+		}
+		function addToCart(){
+			echo "button is working";
 		}
 		pg_close($db);
 		?>
