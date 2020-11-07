@@ -1,6 +1,6 @@
 <script>alert('Please enter all values')</script><!-- UI: Prithviraj Narahari, php code: Alexander Martens -->
 <head>
-<title> CUSTOMER REGISTRATION </title>
+	<title> CUSTOMER REGISTRATION </title>
 </head>
 <body>
 	<?
