@@ -46,9 +46,6 @@
 				<table>
 		<?
 		// if button is pressed add to cart
-		if(array_key_exists('button1', $_POST)) { 
-        	addToCart(); 
-        } 
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 		if($_POST['searchon'] == '*'){
 			$query = "Select * from Book;";
@@ -65,6 +62,11 @@
 			$Price = $row[4];
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
+			//Trigger fuction if button is pressed
+			if(array_key_exists('button1', $_POST)) { 
+				addToCart($ISBN); 
+			} 
+
 					echo '<tr>';
 						echo "<td align='left'>";
 							echo '<form method="post" action="shopping_cart.php">'; 
@@ -88,8 +90,9 @@
 			echo "</td>";
 		//echo "</tr>";
 		}
-		function addToCart(){
-			echo "button is working";
+		function addToCart($ISBN){
+			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
+			pg_query($db, $add);
 		}
 		pg_close($db);
 		?>
