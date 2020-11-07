@@ -18,38 +18,30 @@
 	$query = 'Select '.$_POST['review'].'From Review;';
 	$db_conn = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 	$result =  pg_query($db_conn, $query);
-	if (!$result) {
-	echo "<h3>An error occurred.</h3>";
-	}
-	$arr = pg_fetch_array($result, 0, PGSQL_NUM);
-	pg_close($db_conn);
-?>
-	<table align="center" style="border:1px solid blue;">
-		<tr>
-			<td align="center">
-				<h5> Reviews For:</h5>
-			</td>
-			<td align="left">
-				<h5> </h5>
-			</td>
-		</tr>
+	while ($row = pg_fetch_row($result)) {
+		$a = "<tr><td><h3>Username: ".$roww[1]."</h3></td></tr><tr><td><p>".$row[0]."</p></td></tr><hr>"; 	
+	echo '<table align="center" style="border:1px solid blue;">';
+		echo '<tr>';
+			echo '<td align="center">';
+				echo '<h5> Reviews For:</h5>';
+			echo '</td>';
+			echo '<td align="left">';
+				echo '<h5> </h5>';
+			echo '</td>';
+		echo '</tr>';
 			
-		<tr>
-			<td colspan="2">
-			<div id="bookdetails" style="overflow:scroll;height:200px;width:300px;border:1px solid black;">
-				<table><? 
-				$i = 0;
-				$size = sizeof($arr);
-				$a = "<tr><td><h3>Username: ".$arr[$size-3]."</h3></td></tr><tr><td><p>".$arr[$size-1]."</p></td></tr><hr>"; 	
-				while($i < $size-3):
+		echo '<tr>';
+			echo '<td colspan="2">';
+			echo '<div id="bookdetails" style="overflow:scroll;height:200px;width:300px;border:1px solid black;">';
+				echo '<table>';
 					echo $a;
-					$i = $i + 1;
-				endwhile;	
-				?></table>
+				echo '</table>';
 				
-			</div>
-			</td>
-		</tr>
+			echo '</div>';
+			echo '</td>';
+		echo '</tr>';
+			}
+		?>
 		<tr>
 			<td colspan="2" align="center">
 				<form action="screen2.php" method="post">
