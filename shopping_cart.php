@@ -15,10 +15,12 @@
 	
 		$order = pg_query($db, "select * from \"order\" join \"order_book\" on \"order\".number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
 	
-		if (!empty($_POST)) {
+		if (!empty($_GET)) {
 			$isbn = $_POST['delIsbn'];
 
-			$remove_book = pg_query($db, "delete from order_book where placed = false and book_isbn = '$isbn'");
+			if ($isbn){
+				$remove_book = pg_query($db, "delete from order_book where placed = false and book_isbn = '$isbn'");
+			}
 		}
 		
 		pg_close($db);
