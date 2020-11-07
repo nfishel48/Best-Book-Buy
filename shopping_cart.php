@@ -10,6 +10,20 @@
 	</script>
 </head>
 <body>
+	<?
+		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
+	
+		$order = pg_query($db, "select * from \"order\" join \"order_book\" on \"order\".number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
+	
+		if (!empty($_POST)) {
+			//$username = $_POST['username'];
+
+			//$username_test = pg_query($db, "select * from customer where username = '$username'");
+		}
+		
+		pg_close($db);
+	?>
+
 	<table align="center" style="border:2px solid blue;">
 		<tr>
 			<td align="center">
@@ -29,25 +43,49 @@
 			</td>
 		</tr>
 		<tr>
-				<form id="recalculate" name="recalculate" action="" method="post">
-			<td  colspan="3">
-				<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;">
-					<table align="center" BORDER="2" CELLPADDING="2" CELLSPACING="2" WIDTH="100%">
-						<th width='10%'>Remove</th><th width='60%'>Book Description</th><th width='10%'>Qty</th><th width='10%'>Price</th>
-						<tr><td><button name='delete' id='delete' onClick='del("123441");return false;'>Delete Item</button></td><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td><input id='txt123441' name='txt123441' value='1' size='1' /></td><td>12.99</td></tr>					</table>
-				</div>
-			</td>
+			<form id="recalculate" name="recalculate" action="" method="post">
+				<td  colspan="3">
+					<div id="bookdetails" style="overflow:scroll;height:180px;width:400px;border:1px solid black;">
+						<table align="center" BORDER="2" CELLPADDING="2" CELLSPACING="2" WIDTH="100%">
+							<th width='10%'>Remove</th>
+							<th width='60%'>Book Description</th>
+							<th width='10%'>Qty</th>
+							<th width='10%'>Price</th>
+							<?
+								while ($book = pg_fetch_row($order)) {
+									?>
+									
+									<tr>
+										<td>
+											<button name='delete' id='delete' onClick='del("<? echo($book[4]); ?>");return false;'>Delete Item</button>
+										</td>
+										<td>
+											<? echo($book[7]); ?></br><b>By</b> <? echo($book[8]); ?></br><b>Publisher:</b> <? echo($book[9]); ?>
+										</td>
+										<td>
+											<input id='txt<? echo($book[4]); ?>' name='txt<? echo($book[4]); ?>' value='1' size='1' />
+										</td>
+										<td><? echo($book[10]); ?></td>
+									</tr>
+									
+									<?
+								}
+							?>
+						</table>
+					</div>
+				</td>
 		</tr>
 		<tr>
 			<td align="center">				
-					<input type="submit" name="recalculate_payment" id="recalculate_payment" value="Recalculate Payment">
-				</form>
+				<input type="submit" name="recalculate_payment" id="recalculate_payment" value="Recalculate Payment">
+			</form>
 			</td>
 			<td align="center">
 				&nbsp;
 			</td>
 			<td align="center">			
-				Subtotal:  $12.99			</td>
+				Subtotal:  $12.99
+			</td>
 		</tr>
 	</table>
 </body>
