@@ -45,8 +45,8 @@
 			echo '</div>';
 			echo '</td>';
 		echo '</tr>';
-			}
-		?>
+	}
+?>
 		<tr>
 			<td colspan="2" align="center">
 				<form action="screen2.php" method="post">
