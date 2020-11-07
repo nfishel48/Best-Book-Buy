@@ -54,6 +54,7 @@
 			$Publisher = $row[3];
 			$Price = $row[4];
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
+			$review = "<button name='review' id='review' onClick='review(".$ISBN.", ".$Title.")'>Reviews</button>";
 					echo '<tr>';
 						echo "<td align='left'>";
 							// Place link for cart here	
@@ -63,7 +64,7 @@
 					echo '</tr>';
 				echo '<tr>';
 					echo "<td align='left'>";
-						echo "<button name='review' id='review' onClick='review(\"123441\", \"iuhdf\")'>Reviews</button>";
+						echo $review;
 					echo"</td>";
 				echo "</tr>";
 			echo "</tr>";
