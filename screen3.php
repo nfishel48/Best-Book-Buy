@@ -92,6 +92,7 @@
 		}
 		function addToCart($ISBN){
 			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
+			echo $add;
 			pg_query($db, $add);
 		}
 		pg_close($db);
