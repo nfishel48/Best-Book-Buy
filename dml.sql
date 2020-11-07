@@ -1,6 +1,9 @@
 INSERT INTO Book(ISBN, Title, Author, Publisher, Price)
 VALUES ('10247184712349', '1984', 'George Orwell', 'Penguin', '19.99');
 
+INSERT INTO Book(ISBN, Title, Author, Publisher, Price)   
+VALUES ('10247184712342', 'Animal Farm', 'George Orwell', 'Penguin', '20.00');
+
 INSERT INTO Book(ISBN, Title, Author, Publisher, Price)
 VALUES ('10247184712342', 'Animal Farm', 'George Orwell', 'Penguin', '20.00');
 
