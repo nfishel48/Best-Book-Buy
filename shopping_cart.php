@@ -18,7 +18,7 @@
 		if (!empty($_POST)) {
 			$isbn = $_POST['delIsbn'];
 
-			$remove_book = pg_query($db, "delete from order_book where placed = false and book_isbn = $isbn");
+			$remove_book = pg_query($db, "delete from order_book where placed = false and book_isbn = '$isbn'");
 		}
 		
 		pg_close($db);
