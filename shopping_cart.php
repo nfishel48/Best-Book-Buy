@@ -21,6 +21,14 @@
 			if ($isbn){
 				$remove_book = pg_query($db, "delete from order_book where order_number = (select number from \"order\" where placed = false) and book_isbn = '$isbn'");
 			}
+		} else if (!empty($_POST)){
+			foreach ($_POST as $key => $value) {
+				if ($key[0] == 't' and $key[1] == 'x' and $key[2] == 't'){ //really bad code i know
+					$isbn = substr($key, 3);
+					
+					$query = pg_query($db, "update order_book set quantity = $value where book_isbn = '$isbn'");
+				}
+			}
 		}
 		
 		pg_close($db);
@@ -65,7 +73,7 @@
 											<? echo($book[7]); ?></br><b>By</b> <? echo($book[8]); ?></br><b>Publisher:</b> <? echo($book[9]); ?>
 										</td>
 										<td>
-											<input id='txt<? echo($book[4]); ?>' name='txt<? echo($book[4]); ?>' value='1' size='1' />
+											<input id='txt<? echo($book[4]); ?>' name='txt<? echo($book[4]); ?>' value='<? echo($book[5]); ?>' size='1' />
 										</td>
 										<td><? echo($book[10]); ?></td>
 									</tr>
