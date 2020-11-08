@@ -45,23 +45,24 @@
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">
 				<table>
 		<?
-		// if(array_key_exists('button1', $_POST)) { 			//call function
-		// 	echo 'Hello!';
-		// 	$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
-		// 	echo $add;
-		// 	pg_query($db, $add);
-		// 	addToCart(); 
-		// 	} 
+		if(array_key_exists('button1', $_POST)) { 			//call function
+			echo 'Hello!';
+			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
+			echo $add;
+			pg_query($db, $add);
+			addToCart(); 
+			} 
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
+
 		if($_POST['searchon'] == '*'){
 			$query = "Select * from Book;";
 		}
 		else{
 		$query = "Select * From Book Where ".$_POST['searchon']." LIKE '%".$_POST['searchfor']."%';";
 		}
+
 		$result =  pg_query($db, $query);
 		while ($row = pg_fetch_row($result)) {
-			echo sizeof($row);
 			$ISBN = $row[0];
 			$Title = $row[1];
 			$Author = $row[2];
@@ -93,6 +94,7 @@
 			echo "</td>";
 		//echo "</tr>";
 		function addToCart(){
+			echo $ISBN;
 			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
 			echo $add;
 			pg_query($db, $add);
