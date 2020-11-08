@@ -96,7 +96,7 @@
 						echo "<p>_______________________________________________</p>";
 					echo "</td>";
 			echo "</td>";
-			if($pressed == 'TRUE');{
+			if($pressed == 'TRUE'){
 				echo 'I worked!';
 			}
 		}
