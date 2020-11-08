@@ -97,7 +97,7 @@
 					echo "</td>";
 			echo "</td>";
 			if($pressed == 'TRUE'){
-				echo 'I worked!';
+				echo '<script>console.log("Your stuff here")</script>';
 			}
 		}
 		function addToCart(){
