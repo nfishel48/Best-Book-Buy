@@ -93,14 +93,7 @@
 					echo "</td>";
 			echo "</td>";
 		}
-		function addToCart($result){
-			echo $result;
-			$row = pg_fetch_row($result);
-			echo $row;
-			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$row[0].", 1);";
-			echo $add;
-			pg_query($db, $add);
-		}
+
 		pg_close($db);
 		?>
 	</table>
