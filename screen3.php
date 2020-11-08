@@ -45,10 +45,10 @@
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">
 				<table>
 		<?
-		// if(array_key_exists('button1', $_POST)) { 			//call function
-		// 	echo 'Hello!';
-		// 	addToCart(); 
-		// 	} 
+		if(array_key_exists('button1', $_POST)) { //call function
+			echo 'Hello!';
+			addToCart(); 
+			} 
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 
 		if($_POST['searchon'] == '*'){
@@ -89,10 +89,7 @@
 						echo "<p>_______________________________________________</p>";
 					echo "</td>";
 			echo "</td>";
-		if(array_key_exists('button1', $_POST)) { 			//call function
-			echo 'Hello!';
-			addToCart(); 
-		} 
+
 		function addToCart(){
 			echo $ISBN;
 			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
