@@ -97,15 +97,6 @@
 			echo $add;
 			pg_query($db, $add);
 		}
-		if(array_key_exists('button1', $_POST)) { 			//call function
-			echo 'Hello!';
-			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
-			echo $add;
-			pg_query($db, $add);
-			addToCart(); 
-			} 
-		}
-
 		pg_close($db);
 		?>
 	</table>
