@@ -96,13 +96,10 @@
 						echo "<p>_______________________________________________</p>";
 					echo "</td>";
 			echo "</td>";
-			if($pressed == 'TRUE'){
-				echo '<script>console.log("Your stuff here")</script>';
-			}
 		}
 		function addToCart(){
-			echo $ISBN;
-			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
+			$row = pg_fetch_row($result);
+			$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$row[0].", 1);";
 			echo $add;
 			pg_query($db, $add);
 		}
