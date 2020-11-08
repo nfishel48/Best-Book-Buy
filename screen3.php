@@ -76,7 +76,7 @@
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
 					echo '<tr>';
 						echo "<td align='left'>";
-						echo '<form method="post" >'; 
+						echo '<form >'; 
 							echo '<input type="submit" name="button1"';
 								echo 'class="button" value="Button1" />';
 						echo '</form>'; 
@@ -106,7 +106,6 @@
 			echo $add;
 			pg_query($db, $add);
 		}
-	
 		pg_close($db);
 		?>
 	</table>
