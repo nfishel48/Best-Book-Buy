@@ -61,7 +61,7 @@
 		}
 		$result =  pg_query($db, $query);
 		while ($row = pg_fetch_row($result)) {
-			echo $row;
+			echo sizeof($row);
 			$ISBN = $row[0];
 			$Title = $row[1];
 			$Author = $row[2];
