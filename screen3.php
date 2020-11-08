@@ -61,6 +61,7 @@
 		}
 		$result =  pg_query($db, $query);
 		while ($row = pg_fetch_row($result)) {
+			echo $row;
 			$ISBN = $row[0];
 			$Title = $row[1];
 			$Author = $row[2];
@@ -69,13 +70,6 @@
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
 
-			if(array_key_exists('button1', $_POST)) { 			//call function
-				echo 'Hello Again!';
-				$add = "insert into order_book (order_number, book_isbn, quantity) values(1, ".$ISBN.", 1);";
-				echo $add;
-				pg_query($db, $add);
-				addToCart(); 
-				} 
 					echo '<tr>';
 						echo "<td align='left'>";
 						echo '<form method="post">'; 
