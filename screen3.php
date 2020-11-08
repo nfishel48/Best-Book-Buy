@@ -97,6 +97,7 @@
 			echo $add;
 			pg_query($db, $add);
 		}
+	}
 		pg_close($db);
 		?>
 	</table>
