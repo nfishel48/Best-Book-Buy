@@ -69,7 +69,7 @@
 			$Publisher = $row[3];
 			$Price = $row[4];
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
+			$review = "<button name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'>Reviews</button>";
 					echo '<tr>';
 						echo "<td align='left'>";
 						echo '<form method="post" >'; 
