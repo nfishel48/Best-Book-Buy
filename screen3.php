@@ -45,12 +45,15 @@
 			<div id="bookdetails" style="overflow:scroll;height:200px;width:800px;border:1px solid black;background-color:LightBlue">
 				<table>
 		<?
-		if(array_key_exists('button1', $_POST)) { //call function
+		//Detect button press
+		if(array_key_exists('button1', $_POST)) { 
 			echo 'Hello!';
+			$pressed = True;
 			addToCart(); 
 			} 
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 
+		//Decide what query to run
 		if($_POST['searchon'] == '*'){
 			$query = "Select * from Book;";
 		}
@@ -59,6 +62,9 @@
 		}
 
 		$result =  pg_query($db, $query);
+
+
+		//Print the books
 		while ($row = pg_fetch_row($result)) {
 			$ISBN = $row[0];
 			$Title = $row[1];
@@ -69,7 +75,7 @@
 			$review = "<input name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'></input>";
 					echo '<tr>';
 						echo "<td align='left'>";
-						echo '<form method="post">'; 
+						echo '<form method="post" >'; 
 							echo '<input type="submit" name="button1"';
 								echo 'class="button" value="Button1" />';
 						echo '</form>'; 
@@ -89,6 +95,9 @@
 						echo "<p>_______________________________________________</p>";
 					echo "</td>";
 			echo "</td>";
+			if($pressed);{
+				echo 'I worked!';
+			}
 		}
 		function addToCart(){
 			echo $ISBN;
