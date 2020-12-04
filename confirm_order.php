@@ -30,6 +30,7 @@
 	$i = 0;
 	while($row = pg_fetch_row($bookOrder)){
 		$isbns[$i] = $row[1];
+		$i++;
 	}
 
 	echo "<table align='center' style='border:2px solid blue;'>";
