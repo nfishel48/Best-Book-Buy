@@ -7,26 +7,14 @@
 <body>
 <?
 	$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
-	
-	$order = pg_query($db, "select * from \"order\" join \"order_book\" on \"order\".number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
-
-	if (!empty($_GET)) {
-		$isbn = $_GET['delIsbn'];
-
-		if ($isbn){
-			$remove_book = pg_query($db, "delete from order_book where order_number = (select number from \"order\" where placed = false) and book_isbn = '$isbn'");
-		}
-	} else if (!empty($_POST)){
-		foreach ($_POST as $key => $value) {
-			if ($key[0] == 't' and $key[1] == 'x' and $key[2] == 't'){ //really bad code i know
-				$isbn = substr($key, 3);
-				
-				$query = pg_query($db, "update order_book set quantity = $value where book_isbn = '$isbn'");
-			}
-		}
-	}
-	
-	echo pg_fetch_row(sizeof($order));
+	$order = pg_query($db, 'select * from "order" where placed = false;');
+	$row = pg_fetch_row($order);
+	$orderNumber = $row[0];
+	$customerId = $row[1];
+	$placed = $row[2];
+	echo $orderNumber;
+	echo $customerId;
+	echo $placed;
 	
 	echo "<table align='center' style='border:2px solid blue;'>";
 	echo "<form id='buy' action='proof_purchase.php' method='post'>";
