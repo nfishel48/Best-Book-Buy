@@ -4,7 +4,7 @@ $update = "update Order_book set order_number = 5 where order_number = 1;";
 echo $update;
 pg_query($db, $update);
 pg_close($db);
-//header("Location: https://best-book-buy.herokuapp.com/confirm_order.php?checkout_submit=Proceed+to+Checkout"); 
-//exit;
+header("Location: https://best-book-buy.herokuapp.com/confirm_order.php?checkout_submit=Proceed+to+Checkout"); 
+exit;
 
 ?>
