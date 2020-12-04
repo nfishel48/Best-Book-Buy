@@ -113,6 +113,7 @@
 	$subTotal = 0.00;
 	while($j > -1){
 		$subTotal = $subTotal + $prices[$j];
+		$j--;
 	}
 	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>";
 		echo "SubTotal:".$subTotal."</br>Shipping_Handling:$2</br>_______</br>Total:$14.99	</div>";
