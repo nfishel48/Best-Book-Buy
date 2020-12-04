@@ -25,6 +25,8 @@
 	$cctype = $row[9];
 	$ccnum = $row[10];
 	$expdate = $row[11];
+	$bookOrder = pg_query($db, 'select * from book_order where order_number ='.$orderNumber.';');
+
 
 	echo "<table align='center' style='border:2px solid blue;'>";
 	echo "<form id='buy' action='proof_purchase.php' method='post'>";
@@ -63,8 +65,39 @@
 	echo "<td colspan='3' align='center'>";
 	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:520px;border:1px solid black;'>";
 	echo "<table border='1'>";
-		echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
-		echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
+		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
+		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
+		while ($row = pg_fetch_row($result)) {
+			$ISBN = $row[0];
+			$Title = $row[1];
+			$Author = $row[2];
+			$Publisher = $row[3];
+			$Price = $row[4];
+			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
+			$cart = "<button name='cart' id='cart' type='submit' value='".$ISBN."'>Add to cart</button>";
+			$review = "<button name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'>Reviews</button>";
+					echo '<tr>';
+						echo "<td align='left'>";
+						echo '<form method="post" action="added_to_cart.php" >'; 
+							echo $cart;
+						echo '</form>'; 
+						echo'</td>';
+					echo $book; 
+					echo '</tr>';
+				echo '<tr>';
+					echo "<td align='left'>";
+					echo '<form action="screen4.php" method="post">';
+						echo $review;
+					echo '</form>';
+					echo"</td>";
+				echo "</tr>";
+			echo "</tr>";
+				echo "<tr>";
+					echo "<td colspan='2'>";
+						echo "<p>_______________________________________________</p>";
+					echo "</td>";
+			echo "</td>";
+		}
 	echo "</div>";
 	echo "</td>";
 	echo "</tr>";
