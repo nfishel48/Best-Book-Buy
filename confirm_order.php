@@ -112,6 +112,7 @@
 	$j = sizeof($prices) -1;
 	$subTotal = 0.00;
 	while($j > -1){
+		echo $prices[$j];
 		$subTotal = $subTotal + $prices[$j];
 		$j--;
 	}
