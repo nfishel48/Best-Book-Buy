@@ -36,7 +36,7 @@
 	echo "</td>";
 	echo "</tr>";
 	echo "<td colspan='2'>";
-		echo $address." ".$city."	</td>";
+		echo $firstName." ".$lastName."	</td>";
 	echo "<td rowspan='3' colspan='2'>";
 		echo "<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit card on file<br/>".$cctype." - ".$ccnum." - ".$expdate."<br/>";
 		echo "<input type='radio' name='cardgroup' value='new_card'>New Credit Card<br />";
@@ -51,11 +51,11 @@
 	echo "</td>";
 	echo "<tr>";
 	echo "<td colspan='2'>";
-		echo $firstName."</td>";	
+		echo $address."</td>";	
 	echo "</tr>";
 	echo "<tr>";
 	echo "<td colspan='2'>";
-		echo $lastName."</td>";
+		echo $city."</td>";
 	echo "</tr>";
 	echo "<tr>";
 	echo "<td colspan='2'>";
@@ -98,6 +98,7 @@
 					echo "</td>";
 			echo "</td>";
 		}
+		echo "</table>";
 	echo "</div>";
 	echo "</td>";
 	echo "</tr>";
