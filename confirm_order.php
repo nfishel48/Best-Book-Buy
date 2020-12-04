@@ -73,9 +73,8 @@
 		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
 		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
 		$k = sizeof($isbns)-1 ;
+		$prices = array();
 		while ($k > -1) {
-			$query = 'Select * from book where isbn = CAST('.$isbns[$k].' as VARCHAR(15));';
-			echo $query;
 			$book = pg_query($db, 'Select * from book where isbn = CAST('.$isbns[$k].' as VARCHAR(15));');
 			$row = pg_fetch_row($book);
 			$ISBN = $row[0];
@@ -83,15 +82,16 @@
 			$Author = $row[2];
 			$Publisher = $row[3];
 			$Price = $row[4];
+			$prices[$k] = $Price;
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 					echo '<tr>';
 					echo $book; 
 					echo '</tr>';
-				echo '<tr>';
-					echo"</td>";
-				echo "</tr>";
-			echo "</tr>";
-				echo "<tr>";
+			// 	echo '<tr>';
+			// 		echo"</td>";
+			// 	echo "</tr>";
+			// echo "</tr>";
+			// 	echo "<tr>";
 					echo "<td colspan='2'>";
 						echo "<p>_______________________________________________</p>";
 					echo "</td>";
