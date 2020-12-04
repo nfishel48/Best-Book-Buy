@@ -12,10 +12,20 @@
 	$orderNumber = $row[0];
 	$customerId = $row[1];
 	$placed = $row[2];
-	echo $orderNumber;
-	echo $customerId;
-	echo $placed;
-	
+	$user = pg_query($db, "select * from customer where ID =".$customerId.";");
+	$row = pg_fetch_row($user);
+	$username = $row[1];
+	$firstName = $row[2];
+	$lastName = $row[3];
+	$pin = $row[4];
+	$address = $row[5];
+	$city = $row[6];
+	$state = $row[7];
+	$zip = $row[8];
+	$cctype = $row[9];
+	$ccnum = $row[10];
+	$expdate = $row[11];
+
 	echo "<table align='center' style='border:2px solid blue;'>";
 	echo "<form id='buy' action='proof_purchase.php' method='post'>";
 	echo "<tr>";
@@ -24,9 +34,9 @@
 	echo "</td>";
 	echo "</tr>";
 	echo "<td colspan='2'>";
-		echo "test test	</td>";
+		echo $address." ".$city."	</td>";
 	echo "<td rowspan='3' colspan='2'>";
-		echo "<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit card on file<br />MASTER - 1234567812345678 - 12/2015<br />";
+		echo "<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit card on file<br/>".$cctype." - ".$ccnum." - ".$expdate."<br/>";
 		echo "<input type='radio' name='cardgroup' value='new_card'>New Credit Card<br />";
 				echo "<select id='credit_card' name='credit_card'>";
 					echo "<option selected disabled>select a card type</option>";
@@ -39,15 +49,15 @@
 	echo "</td>";
 	echo "<tr>";
 	echo "<td colspan='2'>";
-		echo "test	</td>";	
+		echo $firstName."</td>";	
 	echo "</tr>";
 	echo "<tr>";
 	echo "<td colspan='2'>";
-		echo "test	</td>";
+		echo $lastName."</td>";
 	echo "</tr>";
 	echo "<tr>";
 	echo "<td colspan='2'>";
-		echo "Tennessee, 12345	</td>";
+		echo $state.", ".$zip."	</td>";
 	echo "</tr>";
 	echo "<tr>";
 	echo "<td colspan='3' align='center'>";
