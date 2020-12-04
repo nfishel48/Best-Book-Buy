@@ -25,7 +25,7 @@
 			}
 		}
 	}
-	echo pg_fetch_row($order);
+	echo pg_fetch_row(size($order));
 	
 	echo "<table align='center' style='border:2px solid blue;'>";
 	echo "<form id='buy' action='proof_purchase.php' method='post'>";
