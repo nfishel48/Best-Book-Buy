@@ -110,6 +110,7 @@
 	echo "</td>";
 	echo "<td align='right'>";
 	$j = sizeof($prices) -1;
+	echo gettype($prices[$j]);
 	$subTotal = 0;
 	while($j > -1){
 		$subTotal = $subTotal + $prices[$j];
