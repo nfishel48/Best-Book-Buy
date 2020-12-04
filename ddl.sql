@@ -1,6 +1,8 @@
-DROP TABLE IF EXISTS Customer;
-DROP TABLE IF EXISTS Review;
-DROP TABLE IF EXISTS Book;
+DROP TABLE IF EXISTS Customer CASCADE;
+DROP TABLE IF EXISTS Review CASCADE;
+DROP TABLE IF EXISTS Book CASCADE;
+ DROP TABLE IF EXISTS Order_t CASCADE;
+ DROP TABLE IF EXISTS order_book CASCADE;
 
 CREATE TABLE Customer( 
     ID SERIAL,
@@ -24,7 +26,7 @@ CREATE TABLE Book(
     Title VARCHAR(225),
     Author VARCHAR(225),
     Publisher VARCHAR(225),
-    Price money,
+    Price int,
     PRIMARY KEY(ISBN)
 );
 
@@ -44,7 +46,7 @@ CREATE TABLE Review(
         ON DELETE CASCADE
 );
 
-CREATE TABLE Order (
+CREATE TABLE Order_t (
     number serial, 
     customer_id int, 
     placed boolean default(false), 
@@ -57,7 +59,7 @@ CREATE TABLE Order_book (
     quantity int, 
     primary key(order_number, book_isbn), 
     foreign key(order_number) 
-    references Order(number), 
+    references Order_t(number), 
     foreign key(book_isbn) 
     references Book(isbn));
 

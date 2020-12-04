@@ -13,13 +13,13 @@
 	<?
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 	
-		$order = pg_query($db, "select * from \"order\" join \"order_book\" on \"order\".number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
+		$order = pg_query($db, "select * from order_t join \"order_book\" on order_t.number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
 	
 		if (!empty($_GET)) {
 			$isbn = $_GET['delIsbn'];
 
 			if ($isbn){
-				$remove_book = pg_query($db, "delete from order_book where order_number = (select number from \"order\" where placed = false) and book_isbn = '$isbn'");
+				$remove_book = pg_query($db, "delete from order_book where order_number = (select number from order_t where placed = false) and book_isbn = '$isbn'");
 			}
 		} else if (!empty($_POST)){
 			foreach ($_POST as $key => $value) {
