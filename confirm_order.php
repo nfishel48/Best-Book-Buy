@@ -26,6 +26,11 @@
 	$ccnum = $row[10];
 	$expdate = $row[11];
 	$bookOrder = pg_query($db, 'select * from order_book where order_number ='.$orderNumber.';');
+	$isbns = array();
+	$i = 0;
+	while($row = pg_fetch_row($bookOrder)){
+		$isbns[$i] = $row[1];
+	}
 
 	echo "<table align='center' style='border:2px solid blue;'>";
 	echo "<form id='buy' action='proof_purchase.php' method='post'>";
@@ -66,7 +71,9 @@
 	echo "<table border='1'>";
 		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
 		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
-		while ($row = pg_fetch_row($bookOrder)) {
+		$k = sizeof($isbns);
+		echo $k;
+		while ($k > 0) {
 			$ISBN = $row[0];
 			$Title = $row[1];
 			$Author = $row[2];
@@ -96,6 +103,7 @@
 						echo "<p>_______________________________________________</p>";
 					echo "</td>";
 			echo "</td>";
+			$k--;
 		}
 		echo "</table>";
 	echo "</div>";
