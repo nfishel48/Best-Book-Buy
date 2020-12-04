@@ -129,7 +129,7 @@
 	echo "</tr>";
 	echo "<tr>";
 		echo "<td align='right'>";
-			echo '<form id="buy" action="checkout.php" method="post">';
+			echo "<form id='buy' action='checkout.php' method='post'>";
 			echo "<input type='submit' id='buyit' name='btnbuyit' value='BUY IT!'>";
 			echo "</form>";
 		echo "</td>";
