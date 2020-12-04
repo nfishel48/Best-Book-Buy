@@ -74,9 +74,8 @@
 		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
 		$k = sizeof($isbns);
 		while ($k > 0) {
-			$query = 'Select * from book where isbn = '.$isbns[$k].';';
 			echo $query;
-			$book = pg_query($db, 'Select * from book where isbn = '.$isbns[k].';');
+			$book = pg_query($db, 'Select * from book where isbn = '.$isbns[$k].';');
 			$row = pg_fetch_row($book);
 			$ISBN = $row[0];
 			$Title = $row[1];
@@ -84,21 +83,10 @@
 			$Publisher = $row[3];
 			$Price = $row[4];
 			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-			$cart = "<button name='cart' id='cart' type='submit' value='".$ISBN."'>Add to cart</button>";
-			$review = "<button name='review' id='review' type='submit' value='".$ISBN."' onClick='review(".$ISBN.", ".$Title.")'>Reviews</button>";
 					echo '<tr>';
-						echo "<td align='left'>";
-						echo '<form method="post" action="added_to_cart.php" >'; 
-							echo $cart;
-						echo '</form>'; 
-						echo'</td>';
 					echo $book; 
 					echo '</tr>';
 				echo '<tr>';
-					echo "<td align='left'>";
-					echo '<form action="screen4.php" method="post">';
-						echo $review;
-					echo '</form>';
 					echo"</td>";
 				echo "</tr>";
 			echo "</tr>";
