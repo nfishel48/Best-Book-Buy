@@ -110,14 +110,13 @@
 	echo "</td>";
 	echo "<td align='right'>";
 	$j = sizeof($prices) -1;
-	$subTotal = 0.00;
+	$subTotal = 0;
 	while($j > -1){
-		echo $prices[$j];
 		$subTotal = $subTotal + $prices[$j];
 		$j--;
 	}
 	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>";
-		echo "SubTotal:".$subTotal."</br>Shipping_Handling:$2</br>_______</br>Total:$14.99	</div>";
+		echo "SubTotal:$".$subTotal."</br>Shipping_Handling:$2</br>_______</br>Total:$14.99	</div>";
 	echo "</td>";
 	echo "</tr>";
 	echo "<tr>";
