@@ -110,10 +110,9 @@
 	echo "</td>";
 	echo "<td align='right'>";
 	$j = sizeof($prices) -1;
-	echo gettype($prices[$j]);
 	$subTotal = 0;
 	while($j > -1){
-		$subTotal = $subTotal + $prices[$j];
+		$subTotal = $subTotal + (double)$prices[$j];
 		$j--;
 	}
 	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>";
