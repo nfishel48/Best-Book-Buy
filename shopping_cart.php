@@ -93,7 +93,7 @@
 			<td align="center">
 				&nbsp;
 			</td>
-			<td align="center">			
+			<td align="center">		
 				Subtotal:  $12.99
 			</td>
 		</tr>

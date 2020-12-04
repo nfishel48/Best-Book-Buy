@@ -15,6 +15,7 @@ CREATE TABLE Customer(
     CCtype VARCHAR(225),
     CCnum VARCHAR(225),
     ExpDate VARCHAR(225),
+    Admin BOOLEAN,
     PRIMARY KEY(ID)
 );
 
