@@ -76,7 +76,7 @@
 		echo $isbns[0];
 		echo $isbns[1];
 		while ($k > 0) {
-			$query = 'Select * from book where isbn = '.$isbns[$k].';';
+			$query = 'Select * from book where isbn = CAST('.$isbns[$k].' as VARCHAR(15));';
 			echo $query;
 			$book = pg_query($db, 'Select * from book where isbn = CAST('.$isbns[$k].' as VARCHAR(15));');
 			$row = pg_fetch_row($book);
