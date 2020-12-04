@@ -74,6 +74,7 @@
 		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
 		$k = sizeof($isbns);
 		echo $k;
+		echo $isbns[0];
 		while ($k > 0) {
 			$query = 'Select * from book where isbn = '.$isbns[k].';';
 			echo $query;
