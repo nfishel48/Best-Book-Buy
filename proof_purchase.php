@@ -5,69 +5,6 @@
 	<header align="center">Proof purchase</header> 
 </head>
 <body>
-	<table align="center" style="border:2px solid blue;">
-	<form id="buy" action="" method="post">
-	<tr>
-	<td>
-	Shipping Address:
-	</td>
-	</tr>
-	<td colspan="2">
-		test test	</td>
-	<td rowspan="3" colspan="2">
-		<b>UserID:</b>test<br />
-		<b>Date:</b>2019-10-03<br />
-		<b>Time:</b>16:34:46<br />
-		<b>Card Info:</b>MASTER<br />12/2015 - 1234567812345678	</td>
-	<tr>
-	<td colspan="2">
-		test	</td>		
-	</tr>
-	<tr>
-	<td colspan="2">
-		test	</td>
-	</tr>
-	<tr>
-	<td colspan="2">
-		Tennessee, 12345	</td>
-	</tr>
-	<tr>
-	<td colspan="3" align="center">
-	<div id="bookdetails" style="overflow:scroll;height:180px;width:520px;border:1px solid black;">
-	<table border='1'>
-		<th>Book Description</th><th>Qty</th><th>Price</th>
-			</table>
-	</div>
-	</td>
-	</tr>
-	<tr>
-	<td align="left" colspan="2">
-	<div id="bookdetails" style="overflow:scroll;height:180px;width:260px;border:1px solid black;background-color:LightBlue">
-	<b>Shipping Note:</b> The book will be </br>delivered within 5</br>business days.
-	</div>
-	</td>
-	<td align="right">
-	<div id="bookdetails" style="overflow:scroll;height:180px;width:260px;border:1px solid black;">
-		SubTotal:$0</br>Shipping_Handling:$0</br>_______</br>Total:$0	</div>
-	</td>
-	</tr>
-	<tr>
-		<td align="right">
-			<input type="submit" id="buyit" name="btnbuyit" value="Print" disabled>
-		</td>
-		</form>
-		<td align="right">
-			<form id="update" action="screen2.php" method="post">
-			<input type="submit" id="update_customerprofile" name="update_customerprofile" value="New Search">
-			</form>
-		</td>
-		<td align="left">
-			<form id="cancel" action="index.php" method="post">
-			<input type="submit" id="exit" name="exit" value="EXIT 3-B.com">
-			</form>
-		</td>
-	</tr>
-	</table>
 	<?
 	$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 	$order = pg_query($db, 'select * from Order_t where placed = false;');
@@ -105,18 +42,11 @@
 	echo "</tr>";
 	echo "<td colspan='2'>";
 		echo $firstName." ".$lastName."	</td>";
-	echo "<td rowspan='3' colspan='2'>";
-		echo "<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit card on file<br/>".$cctype." - ".$ccnum." - ".$expdate."<br/>";
-		echo "<input type='radio' name='cardgroup' value='new_card'>New Credit Card<br />";
-				echo "<select id='credit_card' name='credit_card'>";
-					echo "<option selected disabled>select a card type</option>";
-					echo "<option>VISA</option>";
-					echo "<option>MASTER</option>";
-					echo "<option>DISCOVER</option>";
-				echo "</select>";
-				echo "<input type='text' id='card_number' name='card_number' placeholder='Credit card number'>";
-				echo "<br />Exp date<input type='text' id='card_expiration' name='card_expiration' placeholder='mm/yyyy'>";
-	echo "</td>";
+		echo '<td rowspan="3" colspan="2">';
+		echo '<b>UserID:</b>'.$username.'<br />';
+		echo '<b>Date:</b>'.date("Y-m-d").'<br />';
+		echo '<b>Time:</b>'.date("h:i:sa").'<br />';
+		echo '<b>Card Info:</b>'.$cctype.'<br />'.$expdate.' - '.$ccnum.'	</td>';
 	echo "<tr>";
 	echo "<td colspan='2'>";
 		echo $address."</td>";	
@@ -184,21 +114,21 @@
 	echo "</td>";
 	echo "</tr>";
 	echo "<tr>";
-		echo "<td align='right'>";
-			echo "<input type='submit' id='buyit' name='btnbuyit' value='BUY IT!'>";
-		echo "</td>";
-		echo "</form>";
-		echo "<td align='right'>";
-			echo "<form id='update' action='update_customerprofile.php' method='post'>";
-			echo "<input type='submit' id='update_customerprofile' name='update_customerprofile' value='Update Customer Profile'>";
-			echo "</form>";
-		echo "</td>";
-		echo "<td align='left'>";
-			echo "<form id='cancel' action='index.php' method='post'>";
-			echo "<input type='submit' id='cancel' name='cancel' value='Cancel'>";
-			echo "</form>";
-		echo "</td>";
-	echo "</tr>";
+	echo "<td align='right'>";
+		echo '<input type="submit" id="buyit" name="btnbuyit" value="Print" disabled>';
+	echo "</td>";
+	echo "</form>";
+	echo '<td align="right">';
+		echo '<form id="update" action="screen2.php" method="post">';
+		echo '<input type="submit" id="update_customerprofile" name="update_customerprofile" value="New Search">';
+		echo '</form>';
+	echo '</td>';
+	echo '<td align="left">';
+		echo '<form id="cancel" action="index.php" method="post">';
+		echo '<input type="submit" id="exit" name="exit" value="EXIT 3-B.com">';
+		echo '</form>';
+	echo '</td>';
+echo '</tr>';
 	echo "</table>";
 	pg_close($db);
 ?>
