@@ -73,10 +73,12 @@
 		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
 		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
 		$k = sizeof($isbns);
+		echo $isbns[0];
+		echo $isbns[1];
 		while ($k > 0) {
 			$query = 'Select * from book where isbn = '.$isbns[$k].';';
 			echo $query;
-			$book = pg_query($db, 'Select * from book where isbn = '.$isbns[$k].';');
+			$book = pg_query($db, 'Select * from book where isbn = CAST('.$isbns[$k].' as VARCHAR(15));');
 			$row = pg_fetch_row($book);
 			$ISBN = $row[0];
 			$Title = $row[1];
