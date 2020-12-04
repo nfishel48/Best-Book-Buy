@@ -124,7 +124,7 @@
 		echo '</form>';
 	echo '</td>';
 	echo '<td align="left">';
-		echo '<form id="cancel" action="index.php" method="post">';
+		echo '<form id="cancel" action="checkout.php" method="post">';
 		echo '<input type="submit" id="exit" name="exit" value="EXIT 3-B.com">';
 		echo '</form>';
 	echo '</td>';
