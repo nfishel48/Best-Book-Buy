@@ -75,6 +75,8 @@
 		$k = sizeof($isbns);
 		echo $k;
 		while ($k > 0) {
+			$query = 'Select * from book where isbn = '.$isbns[k].';';
+			echo $query;
 			$book = pg_query($db, 'Select * from book where isbn = '.$isbns[k].';');
 			$row = pg_fetch_row($book);
 			$ISBN = $row[0];
