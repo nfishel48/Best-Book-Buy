@@ -7,6 +7,9 @@ VALUES ('10247184712342', 'Animal Farm', 'George Orwell', 'Penguin', '20');
 INSERT INTO Customer( Username, First_Name, Last_Name, PIN, Address, City, State, Zip, CCtype, CCnum, ExpDate)
 VALUES ('Test', 'Tom', 'Tester', '123', '223 street', 'Ypsilanti','Michigan','48197','VISA','49483020483','10/23'); 
 
+INSERT INTO Customer( Username, First_Name, Last_Name, PIN, Address, City, State, Zip, CCtype, CCnum, ExpDate)
+VALUES ('dummy', 'dummy', 'dummy', '123', '223 street', 'Ypsilanti','Michigan','48197','VISA','49483020483','10/23'); 
+
 INSERT INTO Review(Author, Book, Content)
 VALUES ('Test', '10247184712349', 'Amazing book, must read for anyone.');
 
@@ -18,3 +21,6 @@ VALUES ('Test', '10247184712349', 'Amazing book, must read for anyone.');
 
 INSERT INTO Order_t(number, Customer_id, placed)
 VALUES('1', '1', 'f');
+
+INSERT INTO Order_t(number, Customer_id, placed)
+VALUES('2', '1', 'f');
