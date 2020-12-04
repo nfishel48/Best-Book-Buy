@@ -26,7 +26,9 @@
 	$ccnum = $row[10];
 	$expdate = $row[11];
 	$bookOrder = pg_query($db, 'select * from book_order where order_number ='.$orderNumber.';');
-
+	$row = pg_fetch_row($bookOrder);
+	$Title = $row[1];
+	echo $Title;
 
 	echo "<table align='center' style='border:2px solid blue;'>";
 	echo "<form id='buy' action='proof_purchase.php' method='post'>";
