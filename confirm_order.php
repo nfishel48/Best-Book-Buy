@@ -41,7 +41,6 @@
 	}
 
 	echo "<table align='center' style='border:2px solid blue;'>";
-	echo "<form id='buy' action='proof_purchase.php' method='post'>";
 	echo "<tr>";
 	echo "<td>";
 	echo "Shipping Address:";
@@ -129,11 +128,8 @@
 	echo "</tr>";
 	echo "<tr>";
 		echo "<td align='right'>";
-		echo "<form id='cancel' action='checkout.php' method='post'>";
-		echo "<input type='submit' id='cancel' name='cancel' value='Cancel'>";
-		echo "</form>";
-		echo "<form id='cancel' action='checkout.php' method='post'>";
-		echo "<input type='submit' id='cancel' name='cancel' value='Cancel'>";
+		echo "<form id='buy' action='checkout.php' method='post'>";
+		echo "<input type='submit' id='buyit' name='buyit' value='Buy'>";
 		echo "</form>";
 		echo "</td>";
 		echo "</form>";
