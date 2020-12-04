@@ -115,8 +115,9 @@
 		$subTotal = $subTotal + (double)$prices[$j];
 		$j--;
 	}
+	$Total = $subTotal + 2;
 	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>";
-		echo "SubTotal:$".$subTotal."</br>Shipping_Handling:$2</br>_______</br>Total:$14.99	</div>";
+		echo "SubTotal:$".$subTotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>";
 	echo "</td>";
 	echo "</tr>";
 	echo "<tr>";
