@@ -132,6 +132,9 @@
 		echo "<form id='cancel' action='checkout.php' method='post'>";
 		echo "<input type='submit' id='cancel' name='cancel' value='Cancel'>";
 		echo "</form>";
+		echo "<form id='cancel' action='checkout.php' method='post'>";
+		echo "<input type='submit' id='cancel' name='cancel' value='Cancel'>";
+		echo "</form>";
 		echo "</td>";
 		echo "</form>";
 		echo "<td align='right'>";
