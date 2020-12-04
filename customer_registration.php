@@ -20,7 +20,21 @@
 
 			$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 
-			$log_out = pg_query($db, "update customer set logged_in = false;");
+			$username_test = pg_query($db, "select * from customer where username = '$username'");
+			
+			if ($username_test && pg_num_rows($username_test) > 0) {
+				echo("<h3>Username $username is taken, please try another</h3>");
+			} else if ($pin != $retype_pin) {
+				echo("<h3>Pins do not match</h3>");
+			} else {
+				$insert = pg_query($db, "insert into customer (username, first_name, last_name, pin, address, city, state, zip, cctype, ccnum, expdate) values('$username', '$firstname', '$lastname', $pin, '$address', '$city', '$state', '$zip', '$credit_card', '$card_number', '$expiration')");
+
+				if ($insert) {
+					echo("Account created");
+				} else {
+					echo("There was an error");
+				}
+			}
 
 			pg_close($db);
 		}
