@@ -25,7 +25,7 @@
 	$cctype = $row[9];
 	$ccnum = $row[10];
 	$expdate = $row[11];
-	$bookOrder = pg_query($db, 'select * from book_order where order_number ='.$orderNumber.';');
+	$bookOrder = pg_query($db, 'select * from order_book where order_number ='.$orderNumber.';');
 	$row = pg_fetch_row($bookOrder);
 	$Title = $row[1];
 	echo $Title;
