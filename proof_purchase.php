@@ -127,7 +127,14 @@
 			?>
 		
 			<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>
-				SubTotal:$".$subtotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>
+				SubTotal: $<? echo($subtotal); ?>
+				<br>
+				Shipping & Handling: $2
+				<br>
+				_______
+				<br>
+				Total: $<? echo($Total); ?>
+			</div>
 		</td>
 	</tr>
 	<tr>
@@ -142,7 +149,7 @@
 		</td>
 		<td align='left'>
 			<form id='exit' action='checkout.php' method='post'>
-				<?echo "<button type='submit' id='exit' name='exit' value='".$Total."'>exit</button>" ?>
+				<?echo "<button type='submit' id='exit' name='exit' value='".$Total."'>Exit 3-B.com</button>" ?>
 			</form>
 		</td>
 	</tr>
