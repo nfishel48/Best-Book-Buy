@@ -13,8 +13,8 @@
 			$username = $_POST['username'];
 			$pin = $_POST['pin'];
 			$retype_pin = $_POST['retype_pin'];
-			$firstname = $_POST['firstname'];
-			$lastname = $_POST['lastname'];
+			$first_name = $_POST['firstname'];
+			$last_name = $_POST['lastname'];
 			$address = $_POST['address'];
 			$city = $_POST['city'];
 			$state = $_POST['state'];
@@ -23,21 +23,9 @@
 			$card_number = $_POST['card_number'];
 			$expiration = $_POST['expiration'];
 
-			$username_test = pg_query($db, "select * from customer where username = '$username'");
-			
-			if ($username_test && pg_num_rows($username_test) > 0) {
-				echo("<h3>Username $username is taken, please try another</h3>");
-			} else if ($pin != $retype_pin) {
-				echo("<h3>Pins do not match</h3>");
-			} else {
-				$insert = pg_query($db, "insert into customer (username, first_name, last_name, pin, address, city, state, zip, cctype, ccnum, expdate) values('$username', '$firstname', '$lastname', $pin, '$address', '$city', '$state', '$zip', '$credit_card', '$card_number', '$expiration')");
+			$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = '$pin', address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expdate' where username = '$username'");
 
-				if ($insert) {
-					echo("Account created");
-				} else {
-					echo("There was an error");
-				}
-			}
+			echo("<script type = \"text/javascript\">window.location = \"confirm_order.php\";</script>");
 
 			pg_close($db);
 		}
