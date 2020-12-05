@@ -15,6 +15,8 @@
 	
 		$order = pg_query($db, "select * from order_t join \"order_book\" on order_t.number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
 	
+		$subtotal = 0;
+	
 		if (!empty($_GET)) {
 			$isbn = $_GET['delIsbn'];
 
@@ -67,6 +69,8 @@
 							<th width='10%'>Price</th>
 							<?
 								while ($book = pg_fetch_row($order)) {
+									subtotal += $book[10] * $book[5];
+									
 									?>
 									
 									<tr>
@@ -98,7 +102,7 @@
 				&nbsp;
 			</td>
 			<td align="center">		
-				Subtotal:  $12.99
+				Subtotal: $<? echo($subtotal); ?>
 			</td>
 		</tr>
 	</table>
