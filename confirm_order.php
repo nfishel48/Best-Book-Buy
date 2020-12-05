@@ -90,7 +90,7 @@
 			?>
 			
 			<tr>
-				<td rowspan='2' align='left'>
+				<td>
 					<? echo($Title); ?>
 					<br>
 					<strong>By</strong> <? echo($Author); ?>
