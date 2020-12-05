@@ -3,7 +3,7 @@ $db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3f
 $update = "delete from order_book where order_number = 1;";
 echo $update;
 pg_query($db, $update);
-//$month = date("m");
+$month = date("m");
 // switch($month){
 //     case 1:
 //         $month = "January";
