@@ -85,6 +85,7 @@
 										</td>
 										<td><? echo($book[10]); ?></td>
 									</tr>
+								<? } ?>
 						</table>
 					</div>
 				</td>
