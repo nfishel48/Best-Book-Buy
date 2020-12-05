@@ -14,7 +14,7 @@
 	<table align="center" style="border:2px solid blue;">
 		<tr>
 			<td>
-				Current day/time: <? echo(date("Y-m-d") . " " . date("h:i:sa")); ?>
+				<? echo(date("Y-m-d") . " " . date("h:i:sa")); ?>
 				<br>
 				<br>
 				<strong>Customers registered</strong>: <? echo($user_count[0]); ?>
@@ -24,8 +24,8 @@
 			<td>
 				<table>
 					<tr>
-						<td>Genre</td>
-						<td>Count</td>
+						<td><strong>Genre</strong></td>
+						<td><strong>Count</strong></td>
 					</tr>
 					<?
 						$categories = array();
@@ -55,8 +55,8 @@
 			<td>
 				<table>
 					<tr>
-						<td>Book</td>
-						<td>Reviews</td>
+						<td><strong>Book</strong></td>
+						<td><strong>Reviews</strong></td>
 					</tr>
 					<?
 						$categories = array();
