@@ -40,7 +40,7 @@
 								<tr>
 									<td><? echo($row[0]); ?></td>
 									<td><? 
-											$count = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';")[0];
+											$count = pg_fetch_row(pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';"));
 											
 											echo($count);
 										?>
