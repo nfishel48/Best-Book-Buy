@@ -5,6 +5,12 @@
 <body>
 	<?
 		if (!empty($_POST)) {
+			$donotregister = $_POST['donotregister'];
+			
+			if ($donotregister){
+				echo("<script text = 'text/javascript'>alert('In order to proceed with payment, you need to register first.'); window.location = \"screen2.php\";</script>");
+			}
+			
 			$username = $_POST['username'];
 			$pin = $_POST['pin'];
 			$retype_pin = $_POST['retype_pin'];
@@ -144,7 +150,7 @@
 				<input type="submit" id="register_submit" name="register_submit" value="Register">
 			</td>
 			</form>
-			<form id="no_registration" action="index.php" method="post">
+			<form id="no_registration" action="" method="post">
 			<td colspan="2" align="center">
 				<input type="submit" id="donotregister" name="donotregister" value="Don't Register">
 			</td>

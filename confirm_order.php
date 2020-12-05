@@ -11,7 +11,7 @@
 	$is_logged_in = pg_query($db, 'select * from customer where logged_in = true;');
 	
 	if (pg_num_rows($is_logged_in) == 0){
-		echo("<script type = \"text/javascript\">window.location = \"user_login.php\";</script>");
+		echo("<script type = \"text/javascript\">window.location = \"customer_registration.php\";</script>");
 	}
 	
 	$order = pg_query($db, 'select * from Order_t where placed = false;');
@@ -134,7 +134,7 @@
 		echo "</td>";
 		echo "</form>";
 		echo "<td align='right'>";
-			echo "<form id='update' action='update_customerprofile.php' method='post'>";
+			echo "<form id='update' action='update_customerprofile.php' method='get'>";
 			echo "<input type='submit' id='update_customerprofile' name='update_customerprofile' value='Update Customer Profile'>";
 			echo "</form>";
 		echo "</td>";
