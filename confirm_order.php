@@ -14,12 +14,9 @@
 		echo("<script type = \"text/javascript\">window.location = \"customer_registration.php\";</script>");
 	}
 	
-	$order = pg_query($db, 'select * from Order_t where placed = false;');
-	$row = pg_fetch_row($order);
-	$orderNumber = $row[0];
-	$customerId = $row[1];
-	$placed = $row[2];
-	$user = pg_query($db, "select * from customer where ID =".$customerId.";");
+	$order = pg_query($db, "select * from order_t join \"order_book\" on order_t.number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
+	
+	$user = pg_query($db, "select * from customer where logged_in = true;");
 	$row = pg_fetch_row($user);
 	$username = $row[1];
 	$firstName = $row[2];
@@ -32,13 +29,8 @@
 	$cctype = $row[9];
 	$ccnum = $row[10];
 	$expdate = $row[11];
-	$bookOrder = pg_query($db, 'select * from order_book where order_number ='.$orderNumber.';');
-	$isbns = array();
-	$i = 0;
-	while($row = pg_fetch_row($bookOrder)){
-		$isbns[$i] = $row[1];
-		$i++;
-	}
+
+	$subtotal = 0;
 
 	echo "<table align='center' style='border:2px solid blue;'>";
 	echo "<tr>";
@@ -78,20 +70,20 @@
 	echo "<table border='1'>";
 		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
 		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
-		$k = sizeof($isbns)-1 ;
-		$prices = array();
-		while ($k > -1) {
-			$book = pg_query($db, 'Select * from book where isbn = CAST('.$isbns[$k].' as VARCHAR(15));');
-			$row = pg_fetch_row($book);
-			$ISBN = $row[0];
-			$Title = $row[1];
-			$Author = $row[2];
-			$Publisher = $row[3];
-			$Price = $row[4];
-			$prices[$k] = $Price;
-			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
+		
+		while ($book = pg_fetch_row($order)){
+			$ISBN = $row[4];
+			$Title = $row[7];
+			$Author = $row[8];
+			$Publisher = $row[9];
+			$Price = $row[10];
+			$Quantity = $row[5];
+			
+			$subtotal += $Price * $Quantity;
+			
+			$info = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 					echo '<tr>';
-					echo $book; 
+					echo $info; 
 					echo '</tr>';
 				echo '<tr>';
 					echo"</td>";
@@ -102,8 +94,8 @@
 						echo "<p>_______________________________________________</p>";
 					echo "</td>";
 			echo "</td>";
-			$k--;
 		}
+		
 		echo "</table>";
 	echo "</div>";
 	echo "</td>";
@@ -115,13 +107,9 @@
 	echo "</div>";
 	echo "</td>";
 	echo "<td align='right'>";
-	$j = sizeof($prices) -1;
-	$subTotal = 0;
-	while($j > -1){
-		$subTotal = $subTotal + (double)$prices[$j];
-		$j--;
-	}
+
 	$Total = $subTotal + 2;
+	
 	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>";
 		echo "SubTotal:$".$subTotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>";
 	echo "</td>";
