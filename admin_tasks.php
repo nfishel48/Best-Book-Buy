@@ -14,9 +14,10 @@
 	<table align="center" style="border:2px solid blue;">
 		<tr>
 			<td>
-				<p>Current day/time: <? echo(date("Y-m-d") . " " . date("h:i:sa")); ?></p>
+				Current day/time: <? echo(date("Y-m-d") . " " . date("h:i:sa")); ?>
 				<br>
-				<p>Customers registered: <? echo(row[0]); ?></p>
+				<br>
+				<strong>Customers registered</strong>: <? echo(row[0]); ?>
 			</td>
 		</tr>
 		<tr>
@@ -35,7 +36,7 @@
 						while($row = pg_fetch_row($categories)){
 							?>
 								<tr>
-									<td><? echo(row[1]); ?></td>
+									<td><? echo(row[0]); ?></td>
 							<?
 							
 							$books[$genre] = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';");
@@ -49,7 +50,7 @@
 							$row = pg_fetch_row($x_value);
 								
 							?>
-									<td><? echo(row[1]); ?></td>
+									<td><? echo(row[0]); ?></td>
 							<?
 						}
 					?>
