@@ -15,11 +15,15 @@
 	
 		$order = pg_query($db, "select * from order_t join \"order_book\" on order_t.number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
 	
+		$subtotal = 0;
+	
 		if (!empty($_GET)) {
 			$isbn = $_GET['delIsbn'];
 
 			if ($isbn){
 				$remove_book = pg_query($db, "delete from order_book where order_number = (select number from order_t where placed = false) and book_isbn = '$isbn'");
+				
+				echo("<script type = \"text/javascript\">window.location = \"shopping_cart.php\";</script>");
 			}
 		} else if (!empty($_POST)){
 			foreach ($_POST as $key => $value) {
@@ -27,6 +31,8 @@
 					$isbn = substr($key, 3);
 					
 					$query = pg_query($db, "update order_book set quantity = $value where book_isbn = '$isbn'");
+					
+					echo("<script type = \"text/javascript\">window.location = \"shopping_cart.php\";</script>");
 				}
 			}
 		}
@@ -63,6 +69,8 @@
 							<th width='10%'>Price</th>
 							<?
 								while ($book = pg_fetch_row($order)) {
+									subtotal += $book[10] * $book[5];
+									
 									?>
 									
 									<tr>
@@ -94,7 +102,7 @@
 				&nbsp;
 			</td>
 			<td align="center">		
-				Subtotal:  $12.99
+				Subtotal: $<? echo($subtotal); ?>
 			</td>
 		</tr>
 	</table>
