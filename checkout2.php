@@ -43,7 +43,7 @@ switch($month){
 }
 $sale = "Select Ammount from Sales where Month ='".$month."';";
 $total = pg_query($db, $sale);
-//$total = $total +$_POST;
+$total = $total +$_POST;
 // $sale = "Update Sales Set Ammount =".$total.";";
 // pg_query($db, $sale); 
 pg_close($db);
