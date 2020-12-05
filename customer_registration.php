@@ -8,7 +8,7 @@
 			$donotregister = $_POST['donotregister'];
 			
 			if ($donotregister){
-				echo("<script text = 'text/javascript'>alert('In order to proceed with the payment');</script>");
+				echo("<script text = 'text/javascript'>alert('In order to proceed with payment, you need to register first.'); window.location = \"screen2.php\";</script>");
 			}
 			
 			$username = $_POST['username'];
