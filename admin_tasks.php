@@ -33,25 +33,18 @@
 						
 						$books = array();
 						
+						$i = 0;
+						
 						while($row = pg_fetch_row($categories)){
 							?>
 								<tr>
 									<td><? echo($row[0]); ?></td>
-							<?
-							
-							$books[$genre] = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';");
-							
-							$i++;
-						}
-						
-						rsort($books);
-						
-						foreach($books as $x => $x_value) {
-							$row = pg_fetch_row($x_value);
-								
-							?>
-									<td><? echo($row[0]); ?></td>
-								</tr>
+									<td><? 
+											$count = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';")[0];
+											
+											echo($count);
+										?>
+									</td>
 							<?
 						}
 					?>
