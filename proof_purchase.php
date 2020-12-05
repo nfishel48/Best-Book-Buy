@@ -120,12 +120,12 @@
 	echo "</form>";
 	echo '<td align="right">';
 		echo '<form id="update" action="checkout2.php" method="post">';
-		echo '<input type="submit" id="update_customerprofile" name="update_customerprofile" value="New Search">';
+		echo '<button type="submit" id="update_customerprofile" name="update_customerprofile" value="'.$Total.'">New Search</button>';
 		echo '</form>';
 	echo '</td>';
 	echo '<td align="left">';
 		echo '<form id="cancel" action="checkout.php" method="post">';
-		echo '<input type="submit" id="exit" name="exit" value="EXIT 3-B.com">';
+		echo '<button type="submit" id="exit" name="exit" value="'.$Total.'">EXIT 3-B.com"</button>';
 		echo '</form>';
 	echo '</td>';
 echo '</tr>';

@@ -24,3 +24,39 @@ VALUES ('Test', '10247184712349', 'Amazing book, must read for anyone.');
 
 INSERT INTO Order_t(number, Customer_id, placed)
 VALUES('1', '1', 'f');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('January', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('Febuary', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('March', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('April', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('May', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('June', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('July', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('August', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('September', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('October', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('November', '0');
+
+INSERT INTO Sales(Month, Ammount)
+VALUES('December', '0');

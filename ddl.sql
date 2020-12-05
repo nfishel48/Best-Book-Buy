@@ -64,4 +64,9 @@ CREATE TABLE Order_book (
     foreign key(book_isbn) 
     references Book(isbn));
 
+CREATE TABLE Sales (
+    Month VARCHAR(15),
+    Ammount int,
+    primary key(Month)
+);
 
