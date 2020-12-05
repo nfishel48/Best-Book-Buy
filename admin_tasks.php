@@ -27,9 +27,10 @@ $db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3f
 				$i++;
 			}
 			rsort($books);
-			foreach($books as $x => $x_value) {
-				$row = pg_fetch_row($x_value);
-				echo "<p>".$x." ".$row[0]."</p>";
+			$i = 0;
+			while($row = pg_fetch_row($books)) {
+				echo "<p>". $row[1]." ".$row[0]."</p>";
+				$i++;
 			}
 
 			echo '</td>';
