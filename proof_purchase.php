@@ -126,13 +126,13 @@
 			</form>
 		</td>
 		<td align='right'>
-			<form id='update' action='screen2.php' method='get'>
-				<button type='submit' id='update_customerprofile' name='update_customerprofile' value='checkout2.php'>New Search</button>
+			<form id='update' action='checkout2.php' method='post'>
+				<?echo "<button type='submit' id='update_customerprofile' name='update_customerprofile' value='".$Total."'>New Search</button>" ?>
 			</form>
 		</td>
 		<td align='left'>
-			<form id='exit' action='index.php' method='post'>
-				<button type='submit' id='exit' name='exit' value='checkout.php'>exit</button>
+			<form id='exit' action='checkout.php' method='post'>
+				<?echo "<button type='submit' id='exit' name='exit' value='".$Total."'>exit</button>" ?>
 			</form>
 		</td>
 	</tr>
