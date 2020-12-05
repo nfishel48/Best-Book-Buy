@@ -4,47 +4,47 @@ $update = "delete from order_book where order_number = 1;";
 echo $update;
 pg_query($db, $update);
 //$month = date("m");
-switch($month){
-    case 1:
-        $month = "January";
-        break;
-    case 2:
-        $month = "Febuary";
-        break;
-    case 3:
-        $month = "March";
-        break;
-    case 4:
-        $month = "April";
-        break;
-    case 5:
-        $month = "May";
-        break;
-    case 6:
-        $month = "June";
-        break;
-    case 7:
-        $month = "July";
-        break;
-    case 8: 
-        $month = "August";
-        break;
-    case 9:
-        $month = "September";
-        break;
-    case 10:
-        $month = "October";
-        break;
-    case 11:
-        $month = "November";
-    case 12:
-        $month = "December";
-}
-$sale = "Select Ammount from Sales where Month ='".$month."';";
-$total = pg_query($db, $sale);
-$total = $total +$_POST;
-$sale = "Update Sales Set Ammount =".$total.";";
-pg_query($db, $sale); 
+// switch($month){
+//     case 1:
+//         $month = "January";
+//         break;
+//     case 2:
+//         $month = "Febuary";
+//         break;
+//     case 3:
+//         $month = "March";
+//         break;
+//     case 4:
+//         $month = "April";
+//         break;
+//     case 5:
+//         $month = "May";
+//         break;
+//     case 6:
+//         $month = "June";
+//         break;
+//     case 7:
+//         $month = "July";
+//         break;
+//     case 8: 
+//         $month = "August";
+//         break;
+//     case 9:
+//         $month = "September";
+//         break;
+//     case 10:
+//         $month = "October";
+//         break;
+//     case 11:
+//         $month = "November";
+//     case 12:
+//         $month = "December";
+// }
+// $sale = "Select Ammount from Sales where Month ='".$month."';";
+// $total = pg_query($db, $sale);
+// $total = $total +$_POST;
+// $sale = "Update Sales Set Ammount =".$total.";";
+// pg_query($db, $sale); 
 pg_close($db);
 header("Location: https://best-book-buy.herokuapp.com/screen2.php"); 
 
