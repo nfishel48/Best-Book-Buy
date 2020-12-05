@@ -9,9 +9,6 @@
 		
 		$user = pg_fetch_row(pg_query($db, "select * from customer where logged_in = true;"));
 	
-		echo($user[1]);
-		echo("username = '$user[1]'");
-	
 		if (!empty($_POST)) {
 			$pin = $_POST['new_pin'];
 			$retype_pin = $_POST['retypenew_pin'];
@@ -28,7 +25,7 @@
 			if ($pin != $retype_pin) {
 				echo("<h3>Pins do not match</h3>");
 			} else {
-				$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = $pin, address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expiration' where username = '$user[0]'");
+				$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = $pin, address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expiration' where username = '$user[1]'");
 
 				if ($user_update) {
 					echo("<script type = \"text/javascript\">window.location = \"confirm_order.php\";</script>");
