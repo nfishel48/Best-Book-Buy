@@ -11,9 +11,24 @@ $db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3f
 			echo '<td>';
 			$users = pg_query($db, "Select COUNT(*) From customer");
 			$row = pg_fetch_row($users);
-			echo $row[0];
-			
+				echo "<p>";
+				echo 'Customers registered: '.$row[0].' '.date("h:i:sa").'  '.date("Y-m-d").' ';
+				echo "</p>";
 			echo '</td>';
+		echo '</tr>';
+		echo '<tr>';
+			echo '<td>';
+			$categories = pg_query($db, "Select DISTINCT category from book");
+			$books = array();
+			$i = 0;
+			foreach($categories as &$category){
+				$books[$category] = pg_query($db, "Select COUNT(*) from book where category =".$category);
+			}
+			rsort($books);
+			foreach($books as $x => $x_value) {
+				echo "<p>".$x." ".$x_value;
+			}
+			echo '<td>';
 		echo '</tr>';
 			echo '<form action="index.php" method="post" id="exit">';
 			echo '<td align="center">';

@@ -27,6 +27,7 @@ CREATE TABLE Book(
     Author VARCHAR(225),
     Publisher VARCHAR(225),
     Price int,
+    category VARCHAR(15),
     PRIMARY KEY(ISBN)
 );
 
