@@ -34,6 +34,7 @@
 	?>
 	
 	<table align='center' style='border:2px solid blue;'>
+		<form id='buy' action='proof_purchase.php' method='post'>
 		<tr>
 			<td colspan = 2>
 				<strong>Shipping Address</strong>
@@ -63,89 +64,85 @@
 				<br>Exp date<input type='text' id='card_expiration' name='card_expiration' placeholder='mm/yyyy'>
 			</td>
 		</tr>
-	<tr>
-	<td colspan='3' align='center'>
-		<div id='bookdetails' style='overflow:scroll;height:180px;width:520px;border:1px solid black;'>
-			<table border='1'>
-		
-			
-				<tr>
-					<th>Book Description</th>
-					<th>Qty</th>
-					<th>Price</th>
-				</tr>
-				
-				<?
-				
-				while ($book = pg_fetch_row($order)){
-					$Title = $book[7];
-					$Author = $book[8];
-					$Publisher = $book[9];
-					$Price = $book[10];
-					$Quantity = $book[5];
-					
-					$subtotal += $Price * $Quantity;
-					
-					?>
-					
+		<tr>
+		<td colspan='3' align='center'>
+			<div id='bookdetails' style='overflow:scroll;height:180px;width:520px;border:1px solid black;'>
+				<table border='1'>
 					<tr>
-						<td>
-							<? echo($Title); ?>
-							<br>
-							<strong>By</strong> <? echo($Author); ?>
-							<br>
-							<strong>Price</strong>: <? echo($Price); ?>
-						</td>
-						<td>
-							<? echo($Quantity); ?>
-						</td>
-						<td>
-							<? echo($Price * $Quantity); ?>
-						</td>
+						<th>Book Description</th>
+						<th>Qty</th>
+						<th>Price</th>
 					</tr>
+					
 					<?
-				}
+						while ($book = pg_fetch_row($order)){
+							$Title = $book[7];
+							$Author = $book[8];
+							$Publisher = $book[9];
+							$Price = $book[10];
+							$Quantity = $book[5];
+							
+							$subtotal += $Price * $Quantity;
+							
+							?>
+							
+							<tr>
+								<td>
+									<? echo($Title); ?>
+									<br>
+									<strong>By</strong> <? echo($Author); ?>
+									<br>
+									<strong>Price</strong>: <? echo($Price); ?>
+								</td>
+								<td>
+									<? echo($Quantity); ?>
+								</td>
+								<td>
+									<? echo($Price * $Quantity); ?>
+								</td>
+							</tr>
+							<?
+						}
+					?>
+				</table>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align='left' colspan='2'>
+			<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;background-color:LightBlue'>
+				<b>Shipping Note:</b> The book will be </br>delivered within 5</br>business days.
+			</div>
+		</td>
+		<td align='right'>
+			<? 
+				$Total = $subtotal + 2;
 			?>
-		</table>
+		
+			<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>
+				SubTotal:$".$subtotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>
+		</td>
+	</tr>
+	<tr>
+		<td align='right'>
+			<input type='submit' id='buyit' name='buyit' value='Buy'>
+			</form>
+		</td>
+		<td align='right'>
+			<form id='update' action='update_customerprofile.php' method='get'>
+				<input type='submit' id='update_customerprofile' name='update_customerprofile' value='Update Customer Profile'>
+			</form>
+		</td>
+		<td align='left'>
+			<form id='cancel' action='index.php' method='post'>
+				<input type='submit' id='cancel' name='cancel' value='Cancel'>
+			</form>
+		</td>
+	</tr>
+	</table>
 	
 	<?
-	echo "</div>";
-	echo "</td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td align='left' colspan='2'>";
-	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;background-color:LightBlue'>";
-	echo "<b>Shipping Note:</b> The book will be </br>delivered within 5</br>business days.";
-	echo "</div>";
-	echo "</td>";
-	echo "<td align='right'>";
-
-	$Total = $subtotal + 2;
-	
-	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>";
-		echo "SubTotal:$".$subtotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>";
-	echo "</td>";
-	echo "</tr>";
-	echo "<tr>";
-		echo "<td align='right'>";
-		echo "<form id='buy' action='proof_purchase.php' method='post'>";
-		echo "<input type='submit' id='buyit' name='buyit' value='Buy'>";
-		echo "</form>";
-		echo "</td>";
-		echo "</form>";
-		echo "<td align='right'>";
-			echo "<form id='update' action='update_customerprofile.php' method='get'>";
-			echo "<input type='submit' id='update_customerprofile' name='update_customerprofile' value='Update Customer Profile'>";
-			echo "</form>";
-		echo "</td>";
-		echo "<td align='left'>";
-			echo "<form id='cancel' action='index.php' method='post'>";
-			echo "<input type='submit' id='cancel' name='cancel' value='Cancel'>";
-			echo "</form>";
-		echo "</td>";
-	echo "</tr>";
-	echo "</table>";
-	pg_close($db);
-?>
+		pg_close($db);
+	?>
 </body>
 </HTML>
