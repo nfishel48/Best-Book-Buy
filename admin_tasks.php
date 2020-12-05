@@ -8,7 +8,7 @@
 		$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
 		
 		$users = pg_query($db, "Select COUNT(*) From customer");
-		$row = pg_fetch_row($users);
+		$user_count = pg_fetch_row($users);
 	?>
 	
 	<table align="center" style="border:2px solid blue;">
@@ -17,7 +17,7 @@
 				Current day/time: <? echo(date("Y-m-d") . " " . date("h:i:sa")); ?>
 				<br>
 				<br>
-				<strong>Customers registered</strong>: <? echo(row[0]); ?>
+				<strong>Customers registered</strong>: <? echo(user_count[0]); ?>
 			</td>
 		</tr>
 		<tr>
