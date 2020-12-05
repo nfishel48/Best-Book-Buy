@@ -21,13 +21,19 @@ $db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3f
 			$categories = array();
 			$categories = pg_query($db, "Select DISTINCT category from book;");
 			$books = array();
+			$genres = array();
+			$i = 0;
 			while($row = pg_fetch_row($categories)){
 				$books[$row[0]] = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';");
+				$genres = $row[0];
+				$i++;
 			}
 			rsort($books);
 			foreach($books as $x => $x_value) {
-				echo "<p>".$x." ".$x_value."</p>";
+				$row = pg_fetch_row($x_value);
+				echo "<p>".$x." ".$row[0]."</p>";
 			}
+
 			echo '</td>';
 		echo '</tr>';
 			echo '<form action="index.php" method="post" id="exit">';
