@@ -20,6 +20,8 @@
 
 			if ($isbn){
 				$remove_book = pg_query($db, "delete from order_book where order_number = (select number from order_t where placed = false) and book_isbn = '$isbn'");
+				
+				echo("<script type = \"text/javascript\">window.location = \"shopping_cart.php\";</script>");
 			}
 		} else if (!empty($_POST)){
 			foreach ($_POST as $key => $value) {
@@ -27,6 +29,8 @@
 					$isbn = substr($key, 3);
 					
 					$query = pg_query($db, "update order_book set quantity = $value where book_isbn = '$isbn'");
+					
+					echo("<script type = \"text/javascript\">window.location = \"shopping_cart.php\";</script>");
 				}
 			}
 		}
