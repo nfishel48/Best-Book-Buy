@@ -44,11 +44,11 @@ $sale = "Select Ammount from Sales where Month ='".$month."';";
 $total = pg_query($db, $sale);
 $total = $total +$_POST['submit'];
 echo $total;
-$sale = "Update Sales Set Ammount =".$total.";";
-pg_query($db, $sale); 
+$sale2 = "Update Sales Set Ammount =".$total.";";
+pg_query($db, $sale2); 
 pg_close($db);
-header("Location: https://best-book-buy.herokuapp.com/screen2.php"); 
+//header("Location: https://best-book-buy.herokuapp.com/screen2.php"); 
 
-exit;
+//exit;
 
 ?>
