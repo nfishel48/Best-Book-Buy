@@ -134,7 +134,7 @@
 		echo "</td>";
 		echo "</form>";
 		echo "<td align='right'>";
-			echo "<form id='update' action='update_customerprofile.php' method='post'>";
+			echo "<form id='update' action='update_customerprofile.php' method='get'>";
 			echo "<input type='submit' id='update_customerprofile' name='update_customerprofile' value='Update Customer Profile'>";
 			echo "</form>";
 		echo "</td>";

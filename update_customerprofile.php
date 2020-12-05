@@ -22,10 +22,18 @@
 			$credit_card = $_POST['credit_card'];
 			$card_number = $_POST['card_number'];
 			$expiration = $_POST['expiration'];
+			
+			if ($pin != $retype_pin) {
+				echo("<h3>Pins do not match</h3>");
+			} else {
+				$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = $pin, address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expdate' where username = '$user[0]'");
 
-			$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = $pin, address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expdate' where username = '$user[0]'");
-
-			echo("<script type = \"text/javascript\">window.location = \"confirm_order.php\";</script>");
+				if ($user_update) {
+					echo("<script type = \"text/javascript\">window.location = \"confirm_order.php\";</script>");
+				} else {
+					echo("There was an error");
+				}
+			}
 		}
 		
 		pg_close($db);
