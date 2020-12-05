@@ -69,8 +69,8 @@
 							<th width='10%'>Price</th>
 							<?
 								while ($book = pg_fetch_row($order)) {
-									subtotal += $book[10] * $book[5];
-									
+									$subtotal += $book[10] * $book[5];
+								}
 									?>
 									
 									<tr>
