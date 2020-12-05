@@ -11,8 +11,8 @@
 	
 		if (!empty($_POST)) {
 			$username = $_POST['username'];
-			$pin = $_POST['pin'];
-			$retype_pin = $_POST['retype_pin'];
+			$pin = $_POST['new_pin'];
+			$retype_pin = $_POST['retypenew_pin'];
 			$first_name = $_POST['firstname'];
 			$last_name = $_POST['lastname'];
 			$address = $_POST['address'];
@@ -23,12 +23,12 @@
 			$card_number = $_POST['card_number'];
 			$expiration = $_POST['expiration'];
 
-			$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = '$pin', address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expdate' where username = '$username'");
+			$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = '$pin', address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expdate' where username = '$user[0]'");
 
 			echo("<script type = \"text/javascript\">window.location = \"confirm_order.php\";</script>");
-
-			pg_close($db);
 		}
+		
+		pg_close($db);
 	?>
 
 	<form id="update_profile" action="" method="post">
