@@ -7,12 +7,15 @@
 <body>
 	<?
 	$db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3fbf9m user=gymsvpkhkckshh password=68db7ff943798b07abc442d46449c9d2f4bfcd38be0f79023a630bf67b3b3a8a");
-	$order = pg_query($db, 'select * from Order_t where placed = false;');
-	$row = pg_fetch_row($order);
-	$orderNumber = $row[0];
-	$customerId = $row[1];
-	$placed = $row[2];
-	$user = pg_query($db, "select * from customer where ID =".$customerId.";");
+	
+	$order = pg_query($db, "select * from order_t join \"order_book\" on order_t.number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
+	
+	$user = pg_query($db, "select * from customer where logged_in = true;");
+	
+	if (pg_num_rows($user) == 0){
+		echo("<script type = \"text/javascript\">window.location = \"customer_registration.php\";</script>");
+	}
+	
 	$row = pg_fetch_row($user);
 	$username = $row[1];
 	$firstName = $row[2];
@@ -25,73 +28,87 @@
 	$cctype = $row[9];
 	$ccnum = $row[10];
 	$expdate = $row[11];
-	$bookOrder = pg_query($db, 'select * from order_book where order_number ='.$orderNumber.';');
-	$isbns = array();
-	$i = 0;
-	while($row = pg_fetch_row($bookOrder)){
-		$isbns[$i] = $row[1];
-		$i++;
-	}
 
-	echo "<table align='center' style='border:2px solid blue;'>";
-	echo "<form id='buy' action='proof_purchase.php' method='post'>";
-	echo "<tr>";
-	echo "<td>";
-	echo "Shipping Address:";
-	echo "</td>";
-	echo "</tr>";
-	echo "<td colspan='2'>";
-		echo $firstName." ".$lastName."	</td>";
-		echo '<td rowspan="3" colspan="2">';
-		echo '<b>UserID:</b>'.$username.'<br />';
-		echo '<b>Date:</b>'.date("Y-m-d").'<br />';
-		echo '<b>Time:</b>'.date("h:i:sa").'<br />';
-		echo '<b>Card Info:</b>'.$cctype.'<br />'.$expdate.' - '.$ccnum.'	</td>';
-	echo "<tr>";
-	echo "<td colspan='2'>";
-		echo $address."</td>";	
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td colspan='2'>";
-		echo $city."</td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td colspan='2'>";
-		echo $state.", ".$zip."	</td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td colspan='3' align='center'>";
-	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:520px;border:1px solid black;'>";
-	echo "<table border='1'>";
-		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
-		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
-		$k = sizeof($isbns)-1 ;
-		$prices = array();
-		while ($k > -1) {
-			$book = pg_query($db, 'Select * from book where isbn = CAST('.$isbns[$k].' as VARCHAR(15));');
-			$row = pg_fetch_row($book);
-			$ISBN = $row[0];
-			$Title = $row[1];
-			$Author = $row[2];
-			$Publisher = $row[3];
-			$Price = $row[4];
-			$prices[$k] = $Price;
-			$book = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-					echo '<tr>';
-					echo $book; 
-					echo '</tr>';
-				echo '<tr>';
-					echo"</td>";
-				echo "</tr>";
-			echo "</tr>";
-				echo "<tr>";
-					echo "<td colspan='2'>";
-						echo "<p>_______________________________________________</p>";
-					echo "</td>";
-			echo "</td>";
-			$k--;
-		}
-		echo "</table>";
+	$subtotal = 0;
+
+	?>
+	
+	<table align='center' style='border:2px solid blue;'>
+		<tr>
+			<td>
+				<strong>Shipping Address</strong>
+				<br>
+				<? echo($firstName . " " . $lastName); ?>
+				<br>
+				<? echo($address); ?>
+				<br>
+				<? echo($city); ?>
+				<br>
+				<? echo($state . " " . $zip); ?>
+				<br>
+			</td>
+			<td>
+				<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit Card on file
+				<br>
+				<? echo($cctype . " - " . $ccnum . " - " . $expdate); ?>
+				<br>
+				<input type='radio' name='cardgroup' value='new_card'>New Credit Card<br />
+				<select id='credit_card' name='credit_card'>
+					<option selected disabled>select a card type</option>
+					<option>VISA</option>
+					<option>MASTER</option>
+					<option>DISCOVER</option>
+				</select>
+				<input type='text' id='card_number' name='card_number' placeholder='Credit card number'>
+				<br>Exp date<input type='text' id='card_expiration' name='card_expiration' placeholder='mm/yyyy'>
+			</td>
+		</tr>
+	<tr>
+	<td colspan='3' align='center'>
+		<div id='bookdetails' style='overflow:scroll;height:180px;width:520px;border:1px solid black;'>
+			<table border='1'>
+		
+			
+				<tr>
+					<th>Book Description</th>
+					<th>Qty</th>
+					<th>Price</th>
+				</tr>
+				
+				<?
+				
+				while ($book = pg_fetch_row($order)){
+					$Title = $book[7];
+					$Author = $book[8];
+					$Publisher = $book[9];
+					$Price = $book[10];
+					$Quantity = $book[5];
+					
+					$subtotal += $Price * $Quantity;
+					
+					?>
+					
+					<tr>
+						<td>
+							<? echo($Title); ?>
+							<br>
+							<strong>By</strong> <? echo($Author); ?>
+							<br>
+							<strong>Price</strong>: <? echo($Price); ?>
+						</td>
+						<td>
+							<? echo($Quantity); ?>
+						</td>
+						<td>
+							<? echo($Price * $Quantity); ?>
+						</td>
+					</tr>
+					<?
+				}
+			?>
+		</table>
+	
+	<?
 	echo "</div>";
 	echo "</td>";
 	echo "</tr>";
@@ -102,33 +119,31 @@
 	echo "</div>";
 	echo "</td>";
 	echo "<td align='right'>";
-	$j = sizeof($prices) -1;
-	$subTotal = 0;
-	while($j > -1){
-		$subTotal = $subTotal + (double)$prices[$j];
-		$j--;
-	}
-	$Total = $subTotal + 2;
+
+	$Total = $subtotal + 2;
+	
 	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>";
-		echo "SubTotal:$".$subTotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>";
+		echo "SubTotal:$".$subtotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>";
 	echo "</td>";
 	echo "</tr>";
 	echo "<tr>";
-	echo "<td align='right'>";
-		echo '<input type="submit" id="buyit" name="btnbuyit" value="Print" disabled>';
-	echo "</td>";
-	echo "</form>";
-	echo '<td align="right">';
-		echo '<form id="update" action="checkout2.php" method="post">';
-		echo '<input type="submit" id="update_customerprofile" name="update_customerprofile" value="New Search">';
-		echo '</form>';
-	echo '</td>';
-	echo '<td align="left">';
-		echo '<form id="cancel" action="checkout.php" method="post">';
-		echo '<input type="submit" id="exit" name="exit" value="EXIT 3-B.com">';
-		echo '</form>';
-	echo '</td>';
-echo '</tr>';
+		echo "<td align='right'>";
+		echo "<form id='buy' action='proof_purchase.php' method='post'>";
+		echo "<input type='submit' id='buyit' name='buyit' value='Buy'>";
+		echo "</form>";
+		echo "</td>";
+		echo "</form>";
+		echo "<td align='right'>";
+			echo "<form id='update' action='update_customerprofile.php' method='get'>";
+			echo "<input type='submit' id='update_customerprofile' name='update_customerprofile' value='Update Customer Profile'>";
+			echo "</form>";
+		echo "</td>";
+		echo "<td align='left'>";
+			echo "<form id='cancel' action='index.php' method='post'>";
+			echo "<input type='submit' id='cancel' name='cancel' value='Cancel'>";
+			echo "</form>";
+		echo "</td>";
+	echo "</tr>";
 	echo "</table>";
 	pg_close($db);
 ?>
