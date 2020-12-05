@@ -21,6 +21,8 @@ $db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3f
 			$categories = array();
 			$categories = pg_query($db, "Select DISTINCT category from book;");
 			$row = pg_fetch_row($categories);
+			echo $row[0];
+			echo $row[1];
 			$books = array();
 			foreach($categories as $value){
 				echo $categories;
