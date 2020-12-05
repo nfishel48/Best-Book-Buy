@@ -4,8 +4,8 @@ $update = "delete from order_book where order_number = 1;";
 
 pg_query($db, $update);
 $month = date("m");
-echo $_POST['Total'];
-echo gettype($_POST[Total]);
+echo $_POST['exit'];
+echo gettype($_POST[exit]);
 switch($month){
     case 1:
         $month = "January";
