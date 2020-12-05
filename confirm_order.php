@@ -72,7 +72,7 @@
 		
 	?>
 		<tr>
-			<th rowspan='2' align='left'>Book Description</th>
+			<th>Book Description</th>
 			<th>Qty</th>
 			<th>Price</th>
 		</tr>
@@ -90,7 +90,7 @@
 			?>
 			
 			<tr>
-				<td rowspan='2' align='left'>
+				<td>
 					<? echo($Title); ?>
 					<br>
 					<strong>By</strong> <? echo($Author); ?>
