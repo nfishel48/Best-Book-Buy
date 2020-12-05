@@ -49,8 +49,8 @@ echo $total;
 $sale2 = "Update Sales Set Ammount =".$total.";";
 pg_query($db, $sale2); 
 pg_close($db);
-//header("Location: https://best-book-buy.herokuapp.com/screen2.php"); 
+header("Location: https://best-book-buy.herokuapp.com/screen2.php"); 
 
-//exit;
+exit;
 
 ?>
