@@ -104,23 +104,7 @@
 					<? echo($Price * $Quantity); ?>
 				</td>
 			</tr>
-			
-			
 			<?
-			
-			$info = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
-					echo '<tr>';
-					echo $info; 
-					echo '</tr>';
-				echo '<tr>';
-					echo"</td>";
-				echo "</tr>";
-			echo "</tr>";
-				echo "<tr>";
-					echo "<td colspan='2'>";
-						echo "<p>_______________________________________________</p>";
-					echo "</td>";
-			echo "</td>";
 		}
 		
 		echo "</table>";
