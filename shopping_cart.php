@@ -70,8 +70,8 @@
 							<?
 								while ($book = pg_fetch_row($order)) {
 									$subtotal += $book[10] * $book[5];
-								}
-							?>
+								
+									?>
 									
 									<tr>
 										<td>
