@@ -5,6 +5,10 @@
 <body>
 	<?
 		if (!empty($_POST)) {
+			$donotregister = $_POST['donotregister'];
+			
+			if ($donotregister)
+			
 			$username = $_POST['username'];
 			$pin = $_POST['pin'];
 			$retype_pin = $_POST['retype_pin'];

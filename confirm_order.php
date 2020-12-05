@@ -11,7 +11,7 @@
 	$is_logged_in = pg_query($db, 'select * from customer where logged_in = true;');
 	
 	if (pg_num_rows($is_logged_in) == 0){
-		echo("<script type = \"text/javascript\">window.location = \"user_login.php\";</script>");
+		echo("<script type = \"text/javascript\">window.location = \"customer_registration.php\";</script>");
 	}
 	
 	$order = pg_query($db, 'select * from Order_t where placed = false;');
