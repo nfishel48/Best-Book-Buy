@@ -51,6 +51,7 @@
 								
 							?>
 									<td><? echo(row[0]); ?></td>
+								</tr>
 							<?
 						}
 					?>
@@ -63,8 +64,10 @@
 			</form>
 		</tr>
 	</table>
-	pg_close($db);
-?>
+	
+	<?
+		pg_close($db);
+	?>
 </body>
 
 
