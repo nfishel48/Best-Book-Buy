@@ -127,12 +127,12 @@
 		</td>
 		<td align='right'>
 			<form id='update' action='screen2.php' method='get'>
-				<input type='submit' id='update_customerprofile' name='update_customerprofile' value='New Search'>
+				<button type='submit' id='update_customerprofile' name='update_customerprofile' value='checkout2.php'>New Search</button>
 			</form>
 		</td>
 		<td align='left'>
 			<form id='exit' action='index.php' method='post'>
-				<input type='submit' id='exit' name='exit' value='Exit 3-B.com'>
+				<button type='submit' id='exit' name='exit' value='checkout.php'>exit</button>
 			</form>
 		</td>
 	</tr>
