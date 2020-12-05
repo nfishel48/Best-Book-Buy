@@ -35,7 +35,7 @@
 	
 	<table align='center' style='border:2px solid blue;'>
 		<tr>
-			<td>
+			<td colspan = 2>
 				<strong>Shipping Address</strong>
 				<br>
 				<? echo($firstName . " " . $lastName); ?>
@@ -47,20 +47,16 @@
 				<? echo($state . " " . $zip); ?>
 				<br>
 			</td>
-			<td>
-				<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit Card on file
+			<td colspan = 2>
+				<strong>UserID</strong>: <? echo($username); ?>
 				<br>
-				<? echo($cctype . " - " . $ccnum . " - " . $expdate); ?>
+				<strong>Date</strong>: <? echo($username); ?> 
 				<br>
-				<input type='radio' name='cardgroup' value='new_card'>New Credit Card<br />
-				<select id='credit_card' name='credit_card'>
-					<option selected disabled>select a card type</option>
-					<option>VISA</option>
-					<option>MASTER</option>
-					<option>DISCOVER</option>
-				</select>
-				<input type='text' id='card_number' name='card_number' placeholder='Credit card number'>
-				<br>Exp date<input type='text' id='card_expiration' name='card_expiration' placeholder='mm/yyyy'>
+				<strong>Time</strong>: <? echo($username); ?> 
+				
+				<br><br>
+				
+				<strong>Credit Card Information</strong>: <? echo($cctype . " - " . $ccnum); ?>
 			</td>
 		</tr>
 	<tr>

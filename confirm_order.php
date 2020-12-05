@@ -31,83 +31,84 @@
 
 	$subtotal = 0;
 
-	echo "<table align='center' style='border:2px solid blue;'>";
-	echo "<tr>";
-	echo "<td>";
-	echo "Shipping Address:";
-	echo "</td>";
-	echo "</tr>";
-	echo "<td colspan='2'>";
-		echo $firstName." ".$lastName."	</td>";
-	echo "<td rowspan='3' colspan='2'>";
-		echo "<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit card on file<br/>".$cctype." - ".$ccnum." - ".$expdate."<br/>";
-		echo "<input type='radio' name='cardgroup' value='new_card'>New Credit Card<br />";
-				echo "<select id='credit_card' name='credit_card'>";
-					echo "<option selected disabled>select a card type</option>";
-					echo "<option>VISA</option>";
-					echo "<option>MASTER</option>";
-					echo "<option>DISCOVER</option>";
-				echo "</select>";
-				echo "<input type='text' id='card_number' name='card_number' placeholder='Credit card number'>";
-				echo "<br />Exp date<input type='text' id='card_expiration' name='card_expiration' placeholder='mm/yyyy'>";
-	echo "</td>";
-	echo "<tr>";
-	echo "<td colspan='2'>";
-		echo $address."</td>";	
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td colspan='2'>";
-		echo $city."</td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td colspan='2'>";
-		echo $state.", ".$zip."	</td>";
-	echo "</tr>";
-	echo "<tr>";
-	echo "<td colspan='3' align='center'>";
-	echo "<div id='bookdetails' style='overflow:scroll;height:180px;width:520px;border:1px solid black;'>";
-	echo "<table border='1'>";
-		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
-		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
-		
 	?>
+	
+	<table align='center' style='border:2px solid blue;'>
 		<tr>
-			<th>Book Description</th>
-			<th>Qty</th>
-			<th>Price</th>
+			<td colspan = 2>
+				<strong>Shipping Address</strong>
+				<br>
+				<? echo($firstName . " " . $lastName); ?>
+				<br>
+				<? echo($address); ?>
+				<br>
+				<? echo($city); ?>
+				<br>
+				<? echo($state . " " . $zip); ?>
+				<br>
+			</td>
+			<td colspan = 2>
+				<input type='radio' name='cardgroup' value='profile_card' checked>Use Credit Card on file
+				<br>
+				<? echo($cctype . " - " . $ccnum . " - " . $expdate); ?>
+				<br>
+				<input type='radio' name='cardgroup' value='new_card'>New Credit Card<br />
+				<select id='credit_card' name='credit_card'>
+					<option selected disabled>select a card type</option>
+					<option>VISA</option>
+					<option>MASTER</option>
+					<option>DISCOVER</option>
+				</select>
+				<input type='text' id='card_number' name='card_number' placeholder='Credit card number'>
+				<br>Exp date<input type='text' id='card_expiration' name='card_expiration' placeholder='mm/yyyy'>
+			</td>
 		</tr>
-	<?
+	<tr>
+	<td colspan='3' align='center'>
+		<div id='bookdetails' style='overflow:scroll;height:180px;width:520px;border:1px solid black;'>
+			<table border='1'>
 		
-		while ($book = pg_fetch_row($order)){
-			$Title = $book[7];
-			$Author = $book[8];
-			$Publisher = $book[9];
-			$Price = $book[10];
-			$Quantity = $book[5];
 			
-			$subtotal += $Price * $Quantity;
-			
+				<tr>
+					<th>Book Description</th>
+					<th>Qty</th>
+					<th>Price</th>
+				</tr>
+				
+				<?
+				
+				while ($book = pg_fetch_row($order)){
+					$Title = $book[7];
+					$Author = $book[8];
+					$Publisher = $book[9];
+					$Price = $book[10];
+					$Quantity = $book[5];
+					
+					$subtotal += $Price * $Quantity;
+					
+					?>
+					
+					<tr>
+						<td>
+							<? echo($Title); ?>
+							<br>
+							<strong>By</strong> <? echo($Author); ?>
+							<br>
+							<strong>Price</strong>: <? echo($Price); ?>
+						</td>
+						<td>
+							<? echo($Quantity); ?>
+						</td>
+						<td>
+							<? echo($Price * $Quantity); ?>
+						</td>
+					</tr>
+					<?
+				}
 			?>
-			
-			<tr>
-				<td>
-					<? echo($Title); ?>
-					<br>
-					<strong>By</strong> <? echo($Author); ?>
-					<br>
-					<strong>Price</strong>: <? echo($Price); ?>
-				</td>
-				<td>
-					<? echo($Quantity); ?>
-				</td>
-				<td>
-					<? echo($Price * $Quantity); ?>
-				</td>
-			</tr>
-			<?
-		}
-		
-		echo "</table>";
+		</table>
+	
+	<?
 	echo "</div>";
 	echo "</td>";
 	echo "</tr>";
