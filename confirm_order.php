@@ -72,7 +72,7 @@
 		
 	?>
 		<tr>
-			<th>Book Description</th>
+			<th rowspan='2' align='left'>Book Description</th>
 			<th>Qty</th>
 			<th>Price</th>
 		</tr>
