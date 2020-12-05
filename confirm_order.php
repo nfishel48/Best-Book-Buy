@@ -120,7 +120,14 @@
 			?>
 		
 			<div id='bookdetails' style='overflow:scroll;height:180px;width:260px;border:1px solid black;'>
-				SubTotal:$".$subtotal."</br>Shipping_Handling:$2</br>_______</br>Total:$".$Total."</div>
+				SubTotal: $<? echo($subtotal); ?>
+				<br>
+				Shipping_Handling: $2
+				<br>
+				_______
+				<br>
+				Total: $<? echo($Total); ?>
+			</div>
 		</td>
 	</tr>
 	<tr>
