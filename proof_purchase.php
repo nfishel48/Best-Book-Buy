@@ -10,6 +10,16 @@
 	
 	$order = pg_query($db, "select * from order_t join \"order_book\" on order_t.number = \"order_book\".order_number join book on \"order_book\".book_isbn = book.isbn where placed = false");
 	
+	if (!empty($_POST)){
+		$card_type = $_POST['credit_card'];
+		$card_number = $_POST['card_number'];
+		$card_expiration = $_POST['card_expiration'];
+		
+		if ($card_type && $card_number && $card_expiration){
+			$query = pg_query($db, "update customer set cctype = '$card_type', ccnum = '$card_number', expdate = '$card_expiration' where logged_in = true;");
+		}
+	}
+	
 	$user = pg_query($db, "select * from customer where logged_in = true;");
 	
 	if (pg_num_rows($user) == 0){
@@ -34,7 +44,7 @@
 	?>
 	
 	<table align='center' style='border:2px solid blue;'>
-		<form id='buy' action='proof_purchase.php' method='post'>
+		<form id='buy' action='index.php' method='post'>
 		<tr>
 			<td colspan = 2>
 				<strong>Shipping Address</strong>
