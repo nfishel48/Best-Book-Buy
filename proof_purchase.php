@@ -50,9 +50,9 @@
 			<td colspan = 2>
 				<strong>UserID</strong>: <? echo($username); ?>
 				<br>
-				<strong>Date</strong>: <? echo($username); ?> 
+				<strong>Date</strong>: <? echo(date("m/d/Y")); ?> 
 				<br>
-				<strong>Time</strong>: <? echo($username); ?> 
+				<strong>Time</strong>: <? echo(date("h:i:sa")); ?> 
 				
 				<br><br>
 				
