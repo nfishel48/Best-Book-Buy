@@ -23,7 +23,7 @@
 			$card_number = $_POST['card_number'];
 			$expiration = $_POST['expiration'];
 
-			$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = '$pin', address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expdate' where username = '$user[0]'");
+			$user_update = pg_query($db, "update customer set first_name = '$first_name', last_name = '$last_name', pin = $pin, address = '$address', city = '$city', state = '$state', zip = '$zip', cctype = '$credit_card', ccnum = '$card_number', expdate = '$expdate' where username = '$user[0]'");
 
 			echo("<script type = \"text/javascript\">window.location = \"confirm_order.php\";</script>");
 		}
