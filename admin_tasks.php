@@ -23,14 +23,13 @@ $db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3f
 			$books = array();
 			while($row = pg_fetch_row($categories)){
 				$genre = " ".$row[0]." ";
-				echo $genre;
 				$books[$genre] = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';");
 				$i++;
 			}
 			rsort($books);
 			$i = 0;
 			while($row = pg_fetch_row($books)) {
-				echo "<p>". $books[$i]." ".$row[0]."</p>";
+				echo "<p>". $row[1]." ".$row[0]."</p>";
 				$i++;
 			}
 
