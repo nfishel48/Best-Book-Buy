@@ -51,6 +51,37 @@
 				</table>
 			</td>
 		</tr>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td>Book</td>
+						<td>Reviews</td>
+					</tr>
+					<?
+						$categories = array();
+						$categories = pg_query($db, "Select * from book;");
+						
+						$books = array();
+						
+						$i = 0;
+						
+						while($row = pg_fetch_row($categories)){
+							?>
+								<tr>
+									<td><? echo($row[1]); ?></td>
+									<td><? 
+											$count = pg_fetch_row(pg_query($db, "Select COUNT(*) from review where book ='".$row[0]."';"))[0];
+											
+											echo($count);
+										?>
+									</td>
+							<?
+						}
+					?>
+				</table>
+			</td>
+		</tr>
 			<form action="index.php" method="post" id="exit">
 			<td align="center">
 				<input type="submit" name="cancel" id="cancel" value="EXIT 3-B.com[Admin]" style="width:200px;">
