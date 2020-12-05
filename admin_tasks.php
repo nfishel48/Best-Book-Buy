@@ -24,7 +24,7 @@ $db = pg_connect("host=ec2-3-218-75-21.compute-1.amazonaws.com dbname=d8p0qs8v3f
 			$genres = array();
 			$i = 0;
 			while($row = pg_fetch_row($categories)){
-				$books[$row[0]] = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';");
+				$books[(string)$row[0]] = pg_query($db, "Select COUNT(*) from book where category ='".$row[0]."';");
 				$genres = $row[0];
 				$i++;
 			}
