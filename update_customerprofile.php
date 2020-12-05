@@ -9,8 +9,8 @@
 		
 		$user = pg_fetch_row(pg_query($db, "select * from customer where logged_in = true;"));
 	
-		echo($user[0]);
-		echo("username = '$user[0]'");
+		echo($user[1]);
+		echo("username = '$user[1]'");
 	
 		if (!empty($_POST)) {
 			$pin = $_POST['new_pin'];
