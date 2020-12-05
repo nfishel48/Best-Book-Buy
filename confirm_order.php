@@ -70,8 +70,15 @@
 		// echo "<th>Book Description</th><th>Qty</th><th>Price</th>";
 		// echo "<tr><td>iuhdf</br><b>By</b> Avi Silberschatz</br><b>Publisher:</b> McGraw-Hill</td><td>1</td><td>$12.99</td></tr>	</table>";
 		
+	?>
+		<tr>
+			<th>Book Description</th>
+			<th>Qty</th>
+			<th>Price</th>
+		</tr>
+	<?
+		
 		while ($book = pg_fetch_row($order)){
-			$ISBN = $book[4];
 			$Title = $book[7];
 			$Author = $book[8];
 			$Publisher = $book[9];
@@ -79,6 +86,27 @@
 			$Quantity = $book[5];
 			
 			$subtotal += $Price * $Quantity;
+			
+			?>
+			
+			<tr>
+				<td rowspan='2' align='left'>
+					<? echo($Title); ?>
+					<br>
+					<strong>By</strong> <? echo($Author); ?>
+					<br>
+					<strong>Price</strong>: <? echo($Price); ?>
+				</td>
+				<td>
+					<? echo($Quantity); ?>
+				</td>
+				<td>
+					<? echo($Price * $Quantity); ?>
+				</td>
+			</tr>
+			
+			
+			<?
 			
 			$info = "<td rowspan='2' align='left'>".$Title."</br>".$Author."</br><b>Publisher:</b>".$Publisher.",</br><b>ISBN:</b>".$ISBN."</t> <b>Price:</b>".$Price."</td>";
 					echo '<tr>';
