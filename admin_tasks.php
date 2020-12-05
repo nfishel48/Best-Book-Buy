@@ -28,7 +28,7 @@
 					</tr>
 					<?
 						$categories = array();
-						$categories = pg_query($db, "Select DISTINCT category from book;"
+						$categories = pg_query($db, "Select DISTINCT category from book;");
 						
 						$books = array();
 						
