@@ -119,7 +119,7 @@
 	echo "</td>";
 	echo "</form>";
 	echo '<td align="right">';
-		echo '<form id="update" action="screen2.php" method="post">';
+		echo '<form id="update" action="checkout2.php" method="post">';
 		echo '<input type="submit" id="update_customerprofile" name="update_customerprofile" value="New Search">';
 		echo '</form>';
 	echo '</td>';

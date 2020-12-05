@@ -42,7 +42,7 @@
 				<input type = "password" name = "pin" id = "pin">
 			</td>
 			</form>
-			<form action = "index.php" method = "post" id = "login_screen">
+			<form action = "shopping_cart.php" method = "post" id = "login_screen">
 			<td align = "right">
 				<input type = "submit" name = "cancel" id = "cancel" value = "Cancel">
 			</td>
